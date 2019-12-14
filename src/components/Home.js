@@ -4,7 +4,8 @@ import Post from './Post'
 class Home extends Component {
     render() {
         return (
-            <div className="row">
+            <div className="row home">
+
                 <div className="col-sm-2 bg-secondary side-bar">
                     <h1>side bar</h1>
                     <ul>
@@ -22,8 +23,20 @@ class Home extends Component {
                         </li>
                     </ul>
                 </div>
+
                 <div className="col-sm-10 bg-dark posts">
-                    {/* <Post /> */}
+                    <div className="row">
+                        <Post />
+                        <Post />
+                        <Post />
+                        <Post />
+                        <Post />
+                        <Post />
+                        <Post />
+                        <Post />
+                        <Post />
+                    </div>
+
                 </div>
             </div>
         )

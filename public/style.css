@@ -7,9 +7,16 @@ body {
 }
 
 .side-bar {
-  padding: 100px;
+}
+
+.home {
+  display: flex;
 }
 
 h1 {
   color: red;
+}
 
+.card {
+  margin: 10px;
+}
