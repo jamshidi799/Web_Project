@@ -1,0 +1,15 @@
+body {
+  display: block;
+  margin: 20px;
+}
+.posts {
+  min-width: 400px;
+}
+
+.side-bar {
+  padding: 100px;
+}
+
+h1 {
+  color: red;
+
