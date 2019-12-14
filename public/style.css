@@ -6,6 +6,10 @@ body {
   min-width: 400px;
 }
 
+.card-body span {
+  font-size: 13px;
+}
+
 .side-bar {
 }
 

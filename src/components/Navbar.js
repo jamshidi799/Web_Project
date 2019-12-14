@@ -1,20 +1,30 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class Navbar extends Component {
     render() {
         return (
             <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <Link to="/" class="navbar-brand">Home</Link>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link" href="#">Features</a>
-                        <a class="nav-item nav-link" href="#">Pricing</a>
-                        <a class="nav-item nav-link disabled" href="#">Disabled</a>
+                        <Link to="/channels" class="nav-item nav-link">Channels</Link>
+                        <Link to="/profile" class="nav-item nav-link">Profile</Link>
+                        <Link to="/newPost" class="nav-item nav-link ">New Post</Link>
                     </div>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <Link to="/notifications" class="nav-item nav-link right">Notifications</Link>
+                        </li>
+                        <li class="nav-item">
+                            <Link to="/signin" class="nav-item nav-link">Logout</Link>
+                        </li>
+                    </ul>
                 </div>
             </nav>
         )
