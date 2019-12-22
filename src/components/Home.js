@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import Post from './Post'
+import PostCard from './Post/PostCard'
 import SideBar from './SideBar'
+import { Link } from 'react-router-dom'
 
 class Home extends Component {
     render() {
@@ -9,15 +10,11 @@ class Home extends Component {
                 <SideBar />
                 <div className="col-sm-10 bg-dark posts">
                     <div className="row">
-                        <Post />
-                        <Post />
-                        <Post />
-                        <Post />
-                        <Post />
-                        <Post />
-                        <Post />
-                        <Post />
-                        <Post />
+                        <PostCard />
+                        <PostCard />
+                        <PostCard />
+                        <PostCard />
+                        <PostCard />
                     </div>
 
                 </div>
