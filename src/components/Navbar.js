@@ -12,8 +12,9 @@ class Navbar extends Component {
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
                         <Link to="/channels" class="nav-item nav-link">Channels</Link>
-                        {/* <Link to="/newPost" class="nav-item nav-link ">New Post</Link> */}
+                        <Link to="/signin" class="nav-item nav-link ">Signin</Link>
                         <Link to="/profile" class="nav-item nav-link">Profile</Link>
+                        <Link to="/signup" class="nav-item nav-link">signup</Link>
                     </div>
                 </div>
                 <div class="navbar-collapse collapse">

@@ -7,6 +7,8 @@ import Channels from './components/Channels'
 import NewPost from './components/Post/NewPost'
 import Notifications from './components/Notifications'
 import PostPage from './components/Post/PostPage';
+import SignIn from './components/Auth/SignIn'
+import SignUp from './components/Auth/SignUp';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
           <Route exact path='/newPost' component={NewPost} />
           <Route exact path='/notifications' component={Notifications} />
           <Route exact path='/post/:post_id' component={PostPage} />
+          <Route exact path='/signin' component={SignIn} />
+          <Route exact path='/signup' component={SignUp} />
 
         </Switch>
       </div>
