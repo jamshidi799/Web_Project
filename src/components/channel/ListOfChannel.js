@@ -26,7 +26,7 @@ const ListOfChannel = () => {
     const classes = useStyles();
 
     return (
-        <React.Fragment>
+        <div className='d-flex justify-content-center'>
             <GridList cellHeight={"auto"} className={classes.gridList}>
                 <ListSubheader component="div">Channels</ListSubheader>
                 <GridListTile key="Subheader" cols={2} style={{height: 'auto'}}>
@@ -41,7 +41,7 @@ const ListOfChannel = () => {
                 <ChannelCard username="8"/>
 
             </GridList>
-        </React.Fragment>
+        </div>
     );
 };
 export default ListOfChannel

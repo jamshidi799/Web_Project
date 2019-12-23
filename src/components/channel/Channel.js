@@ -4,7 +4,7 @@ import ListOfPosts from "./ListOfPosts";
 import AboutChannel from "./AboutChannel";
 import ListOfChannel from "./ListOfChannel";
 
-class Channels extends Component {
+class Channel extends Component {
     state = {
         channelName:null,
         aboutChannel:"Channel for Animals",
@@ -36,4 +36,4 @@ class Channels extends Component {
     }
 }
 
-export default Channels
+export default Channel

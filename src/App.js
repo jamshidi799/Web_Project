@@ -2,10 +2,11 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Home from './components/Home'
 import Navbar from './components/Navbar'
-import Channels from './components/channel/Channels'
+import Channel from './components/channel/Channel'
 import NewPost from './components/Post/NewPost'
 import Notifications from './components/Notifications'
 import PostPage from './components/Post/PostPage';
+import ListOfChannel from "./components/channel/ListOfChannel";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <Switch>
           <Route exact path='/' component={Home} />
           {/* <Route exact path='/profile' component={Profile} /> */}
-          <Route exact path='/channels/:channelName' component={Channels} />
+          <Route exact path='/channel/:channelName' component={Channel} />
           <Route exact path='/newPost' component={NewPost} />
           <Route exact path='/notifications' component={Notifications} />
           <Route exact path='/post/:post_id' component={PostPage} />
