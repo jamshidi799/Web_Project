@@ -29,3 +29,9 @@ h1 {
 .card {
   margin: 10px;
 }
+
+.profile-image {
+  width: 120px;
+  margin-left: 100px;
+  margin-right: 50px;
+}
