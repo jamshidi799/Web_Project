@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.palette.background.paper,
     },
     gridList: {
-        width: 536,
+        width: 300,
         height: 880,
     },
     icon: {

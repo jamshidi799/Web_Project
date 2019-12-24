@@ -7,7 +7,7 @@ import ImageAvatars from "../Avatar";
 class ChannelCard extends Component {
     render() {
         return (
-            <div style={{ width: 33 + 'rem' }}>
+            <div style={{ width: 23 + 'rem' }}>
                 <div>
                     <div className=' d-flex justify-content-center'>
                         <div className="d-flex flex-column">
