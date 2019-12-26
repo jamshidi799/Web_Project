@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 class PostCard extends Component {
     render() {
+        console.log(this.props)
         return (
             <div class="card" style={{ width: 18 + 'rem' }}>
                 <img class="card-img-top" src={img} alt="post" />
