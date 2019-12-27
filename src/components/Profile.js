@@ -1,49 +1,50 @@
 import React, { Component } from 'react'
-import img from '../img/kim.jpg'
+import { connect } from 'react-redux'
+
+import { getPosts } from '../actions/posts'
 import PostCard from './Post/PostCard'
 
+import img from '../img/kim.jpg'
+
 class Profile extends Component {
+    componentDidMount() {
+        this.props.getPosts()
+    }
+
     render() {
         return (
-            <div class="container">
-                <div class="jumbotron bg-light">
-                    <div class="row">
-                        <div class="col-3">
-                            <img src={img} class="img-fluid rounded-circle profile-image" alt="Cinque Terre" />
+            <div className="container">
+                <div className="jumbotron bg-light">
+                    <div className="row">
+                        <div className="col-3">
+                            <img src={img} className="img-fluid rounded-circle profile-image" alt="Cinque Terre" />
                         </div>
-                        <div class="col-1">
+                        <div className="col-1">
 
                         </div>
-                        <div class="col-6">
+                        <div className="col-6">
                             <h3>Kim Kardashian</h3>
-                            <div class="row">
-                                <div class="col-3">
+                            <div className="row">
+                                <div className="col-3">
                                     <h6>6 posts</h6>
                                 </div>
-                                <div class="col-5">
+                                <div className="col-5">
                                     <h6>132M followers</h6>
                                 </div>
-                                <div class="col-4">
+                                <div className="col-4">
                                     <h6>22 following</h6>
                                 </div>
                             </div>
-                            <p class="font-weight-light">bio: Search for the keywords to learn more about each warning</p>
+                            <p className="font-weight-light">bio: Search for the keywords to learn more about each warning</p>
                         </div>
                     </div>
                 </div>
-                <div class="jumbotron row bg-light">
-                    <div class="col-4">
-                        <PostCard />
-                    </div>
-                    <div class="col-4">
-                        <PostCard />
-                    </div>
-                    <div class="col-4">
-                        <PostCard />
-                    </div>
-                    <div class="col-4">
-                        <PostCard />
-                    </div>
+                <div className="jumbotron row bg-light">
+                    {this.props.posts.map(post => {
+                        return (
+                            <PostCard key={post.id} post={post} classNameName="col-4" />
+                        )
+                    })}
                 </div>
             </div>
         )
@@ -51,4 +52,11 @@ class Profile extends Component {
 
 }
 
-export default Profile
+const mapStateToProps = state => {
+    // console.log("mapStateTo", state)
+    return {
+        posts: state.posts.posts
+    }
+}
+
+export default connect(mapStateToProps, { getPosts })(Profile)

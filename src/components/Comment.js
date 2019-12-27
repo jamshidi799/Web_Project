@@ -8,8 +8,8 @@ const Comment = () => {
         <div>
             <p className="lead">img elements must have an alt prop, either with meaningful</p>
             <div>
-                <img src={likeIcon} /> <span>3.1k   </span>
-                <img src={unlikeIcon} /> <span>123    </span>
+                <img src={likeIcon} alt="like" /> <span>3.1k   </span>
+                <img src={unlikeIcon} alt="unlike" /> <span>123    </span>
             </div>
             <hr class="my-4" />
         </div>

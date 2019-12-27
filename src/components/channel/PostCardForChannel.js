@@ -12,8 +12,8 @@ class PostCardForChannel extends Component {
                     <Link to="/post/3"><h5 class="card-title">Card title</h5></Link>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <div><span>132,231 views</span></div>
-                    <img src={likeIcon} /> <span>3.1k   </span>
-                    <img src={likeIcon} /> <span>123    </span>
+                    <img src={likeIcon} alt="like" /> <span>3.1k   </span>
+                    <img src={likeIcon} alt="unlike" /> <span>123    </span>
 
                 </div>
             </div>

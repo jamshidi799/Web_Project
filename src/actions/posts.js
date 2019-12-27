@@ -6,7 +6,7 @@ export const getPosts = () => (dispatch) => {
     // console.log('action before')
     axios.get('http://localhost:8000/api/posts/')
         .then(res => {
-            console.log("query", res.data)
+            console.log("get_query", res.data)
             return dispatch({
                 type: GET_POSTS,
                 payload: res.data

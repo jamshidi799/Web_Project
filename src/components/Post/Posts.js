@@ -5,36 +5,30 @@ import PostCard from './PostCard'
 import { getPosts } from '../../actions/posts'
 
 class Posts extends Component {
-    static propTypes = {
-        posts: PropTypes.array.isRequired,
-        getPosts: PropTypes.func.isRequired,
-    }
+    // static propTypes = {
+    //     posts: PropTypes.array.isRequired,
+    //     getPosts: PropTypes.func.isRequired,
+    // }
 
     componentDidMount() {
-        // console.log(this.props)
-
         this.props.getPosts()
-        console.log("111", this.props)
+        // console.log("111", this.props)
     }
 
     render() {
-        console.log('render', this.props.posts)
+        // console.log('render', this.props.posts)
         return (
             <Fragment>
-                {console.log('return', this.props.posts)}
-                {/* {this.props.posts.map(post => console.log(post))} */}
-                {/* {this.props.posts.forEach(element => {
-                    console.log(element)
-                })} */}
+                {this.props.posts.map(post => <PostCard key={post.id} post={post} />)}
             </Fragment>
         )
     }
 }
 
 const mapStateToProps = state => {
-    console.log("mapStateTo", state)
+    // console.log("mapStateTo", state)
     return {
-        posts: state.posts
+        posts: state.posts.posts
     }
 }
 

@@ -24,7 +24,7 @@ function App() {
             <Route exact path='/profile' component={Profile} />
             <Route exact path='/channel/:channelName' component={Channel} />
             <Route exact path='/newPost' component={NewPost} />
-            <Route exact path='/notifications' component={Notifications} />
+            {/* <Route exact path='/notifications' component={Notifications} /> */}
             <Route exact path='/post/:post_id' component={PostPage} />
             <Route exact path='/signin' component={SignIn} />
             <Route exact path='/signup' component={SignUp} />
