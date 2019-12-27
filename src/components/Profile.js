@@ -5,6 +5,7 @@ import { getPosts } from '../actions/posts'
 import PostCard from './Post/PostCard'
 
 import img from '../img/kim.jpg'
+import { Link } from 'react-router-dom'
 
 class Profile extends Component {
     componentDidMount() {
@@ -36,6 +37,15 @@ class Profile extends Component {
                                 </div>
                             </div>
                             <p className="font-weight-light">bio: Search for the keywords to learn more about each warning</p>
+                        </div>
+                    </div>
+                    <div className="row text-center">
+                        <div className="container">
+                            <Link to="/newPost">
+                                <button className="btn btn-primary">new post</button>
+                            </Link>
+                            <button className="btn btn-primary">new channel</button>
+
                         </div>
                     </div>
                 </div>

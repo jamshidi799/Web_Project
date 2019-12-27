@@ -27,11 +27,11 @@ export const deletePost = (id) => (dispatch) => {
 
 // ADD POST
 export const addPost = post => (dispatch) => {
-    axios.post('./api/posts/', post)
+    axios.post('http://localhost:8000/api/posts/', post)
         .then(res => {
             dispatch({
                 type: ADD_POST,
                 payload: res.data
             })
-        })
+        }).catch(error => console.log(error))
 }
