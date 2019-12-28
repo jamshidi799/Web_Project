@@ -22,9 +22,10 @@ export default function (state = initialState, actions) {
                 posts: state.posts.filter(post => post.id !== actions.payload)
             }
         case ADD_POST:
+            const newPost = { id: String(state.posts.length), ...actions.payload }   // only for without server mode
             return {
                 ...state,
-                posts: [...state.posts, actions.payload]
+                posts: [...state.posts, newPost]
             }
         default:
             return state
