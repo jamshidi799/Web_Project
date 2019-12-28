@@ -13,6 +13,8 @@ import SignUp from './components/Auth/SignUp';
 import Channel from './components/channel/Channel'
 import NewPost from './components/Post/NewPost'
 
+import PrivateRoute from "./components/common/PrivateRoute";
+
 function App() {
   return (
     <Provider store={store}>
@@ -20,12 +22,12 @@ function App() {
         <div>
           <Navbar />
           <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/profile' component={Profile} />
-            <Route exact path='/channel/:channelName' component={Channel} />
-            <Route exact path='/newPost' component={NewPost} />
+            <PrivateRoute exact path='/' component={Home} />
+            <PrivateRoute exact path='/profile' component={Profile} />
+            <PrivateRoute exact path='/channel/:channelName' component={Channel} />
+            <PrivateRoute exact path='/newPost' component={NewPost} />
             {/* <Route exact path='/notifications' component={Notifications} /> */}
-            <Route exact path='/post/:post_id' component={PostPage} />
+            <PrivateRoute exact path='/post/:post_id' component={PostPage} />
             <Route exact path='/signin' component={SignIn} />
             <Route exact path='/signup' component={SignUp} />
 
