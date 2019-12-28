@@ -5,15 +5,17 @@ import { Link } from 'react-router-dom'
 
 class PostCard extends Component {
     render() {
+        // console.log("PostCard", this.props)
+        const { title, content } = this.props.post
         return (
-            <div class="card" style={{ width: 18 + 'rem' }}>
-                <img class="card-img-top" src={img} alt="post" />
-                <div class="card-body">
-                    <Link to="/post/3"><h5 class="card-title">Card title</h5></Link>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div className="card" style={{ width: 18 + 'rem' }}>
+                <img className="card-img-top" src={img} alt="post" />
+                <div className="card-body">
+                    <Link to="/post/3"><h5 className="card-title">{title}</h5></Link>
+                    <p className="card-text">{content}</p>
                     <div><span>132,231 views</span></div>
-                    <img src={likeIcon} /> <span>3.1k   </span>
-                    <img src={likeIcon} /> <span>123    </span>
+                    <img src={likeIcon} alt="like" /> <span>3.1k   </span>
+                    <img src={likeIcon} alt="unlike" /> <span>123    </span>
 
                 </div>
             </div>
