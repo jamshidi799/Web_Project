@@ -7,7 +7,7 @@ class SignUp extends Component {
     state = {
         username: '',
         email: '',
-        password: ''
+        password: '',
     }
 
     onChange = e => {
@@ -17,8 +17,7 @@ class SignUp extends Component {
     onSubmit = e => {
         e.preventDefault()
         const { username, email, password } = this.state
-        const user = { username, email, password }
-        console.log(user)
+        const user = { username, email, password, bio: '', image_url: '', }
         this.props.register(user)
     }
 

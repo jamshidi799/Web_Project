@@ -16,7 +16,6 @@ class SignIn extends Component {
         e.preventDefault()
         const { username, password } = this.state
         const user = { username, password }
-        console.log(user)
         this.props.login(user)
     }
 

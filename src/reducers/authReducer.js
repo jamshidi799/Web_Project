@@ -9,17 +9,24 @@ const initialState = {
     isAuthenticated: null,
     isLoading: false,
     user: null,
-    users: []
+    users: [
+        { id: '1', username: 'ali', email: 'ali@gmail.com', password: '1234', bio: '', image_url: '', },
+    ]
 };
 
 export default function (state = initialState, action) {
     switch (action.type) {
         case REGISTER:
-            console.log('reducer: register', action)
-            return state
+            return {
+                ...state,
+                users: [...state.users, action.payload]
+            }
         case LOGIN:
-            console.log('reducer: login', action)
-            return state
+            return {
+                ...state,
+                isAuthenticated: true,
+                user: action.payload,
+            }
         default:
             return state;
     }
