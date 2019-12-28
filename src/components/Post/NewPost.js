@@ -18,7 +18,6 @@ class NewPost extends Component {
         const post = { title, content, image_url: "_" }
         console.log(post)
         this.props.addPost(post)
-
     }
 
 
