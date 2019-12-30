@@ -17,9 +17,10 @@ export const getComment = (id) => (dispatch) => {
 }
 
 // ADD COMMENT
-export const addComment = Comment => (dispatch) => {
+export const addComment = Comment => (dispatch, getState) => {
+    const id = getState().comment.comments.length + 1
     dispatch({
         type: ADD_COMMENT,
-        payload: Comment
+        payload: { ...Comment, id }
     })
 }
