@@ -23,7 +23,7 @@ class Posts extends Component {
 const mapStateToProps = state => {
     console.log("mapStateTo", state)
     return {
-        posts: state.posts.posts
+        posts: state.post.posts
     }
 }
 

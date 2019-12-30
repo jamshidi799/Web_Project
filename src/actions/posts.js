@@ -39,13 +39,21 @@
 
 
 
-import { GET_POSTS, DELETE_POST, ADD_POST } from './types'
+import { GET_POSTS, GET_POST, DELETE_POST, EDIT_COMMENT, ADD_POST } from './types'
 
 // GET POSTS
 export const getPosts = () => (dispatch) => {
     // console.log('action before')
     return dispatch({
         type: GET_POSTS,
+    })
+}
+
+export const getPost = (id) => (dispatch) => {
+    // console.log('action before')
+    return dispatch({
+        type: GET_POST,
+        payload: id
     })
 }
 

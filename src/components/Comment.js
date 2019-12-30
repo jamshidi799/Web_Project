@@ -11,7 +11,7 @@ const Comment = () => {
                 <img src={likeIcon} alt="like" /> <span>3.1k   </span>
                 <img src={unlikeIcon} alt="unlike" /> <span>123    </span>
             </div>
-            <hr class="my-4" />
+            <hr className="my-4" />
         </div>
     )
 }
