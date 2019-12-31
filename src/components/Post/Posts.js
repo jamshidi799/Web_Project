@@ -7,14 +7,16 @@ class Posts extends Component {
 
     componentDidMount() {
         this.props.getPosts()
-        // console.log("get posts in component did mount", this.props)
     }
 
     render() {
-        // console.log('render', this.props)
+        const user = this.props.user
         return (
             <Fragment>
-                {this.props.posts.map(post => <PostCard key={post.id} post={post} />)}
+                {this.props.posts.map(post => {
+                    if (post.userid === user.id)
+                        return <PostCard key={post.id} post={post} />
+                })}
             </Fragment>
         )
     }
@@ -23,7 +25,8 @@ class Posts extends Component {
 const mapStateToProps = state => {
     console.log("mapStateTo", state)
     return {
-        posts: state.post.posts
+        posts: state.post.posts,
+        user: state.auth.user
     }
 }
 

@@ -14,14 +14,18 @@ class PostPage extends Component {
     }
 
     componentDidMount() {
-        this.props.getPost(this.props.match.params.post_id)
-        this.props.getComments(this.props.match.params.post_id)
+        const postid = this.props.match.params.post_id
+        this.props.getPost(postid)
+        this.props.getComments()
     }
 
     onCommentSubmit = e => {
         e.preventDefault()
         const content = this.state.comment
-        const comment = { postid: this.props.currentPost.id, userid: this.props.currentPost.userid, parentid: '', content }
+        const comment = {
+            postid: this.props.currentPost.id,
+            userid: this.props.currentPost.userid, parentid: '', like: [], dislike: [], content
+        }
         this.props.addComment(comment)
     }
 
@@ -31,7 +35,7 @@ class PostPage extends Component {
 
 
     render() {
-        const { title, content } = this.props.currentPost
+        const { id, title, content } = this.props.currentPost
         return (
             <div className="container">
                 <div className="jumbotron">
@@ -60,7 +64,10 @@ class PostPage extends Component {
                             </form>
                         </div>
                         <br />
-                        {this.props.comments.map(comment => <Comment key={comment.id} comment={comment} />)}
+                        {this.props.comments.map(comment => {
+                            if (comment.postid === id)
+                                return <Comment key={comment.id} comment={comment} />
+                        })}
                     </div>
 
                 </div>

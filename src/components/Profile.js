@@ -6,6 +6,7 @@ import PostCard from './Post/PostCard'
 
 import img from '../img/kim.jpg'
 import { Link } from 'react-router-dom'
+import Posts from './Post/Posts'
 
 class Profile extends Component {
     componentDidMount() {
@@ -45,16 +46,11 @@ class Profile extends Component {
                                 <button className="btn btn-primary">new post</button>
                             </Link>
                             <button className="btn btn-primary">new channel</button>
-
                         </div>
                     </div>
                 </div>
                 <div className="jumbotron row bg-light">
-                    {this.props.posts.map(post => {
-                        return (
-                            <PostCard key={post.id} post={post} classNameName="col-4" />
-                        )
-                    })}
+                    <Posts />
                 </div>
             </div>
         )
@@ -63,9 +59,8 @@ class Profile extends Component {
 }
 
 const mapStateToProps = state => {
-    // console.log("mapStateTo", state)
     return {
-        posts: state.posts.posts
+        posts: state.post.posts
     }
 }
 

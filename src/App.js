@@ -22,18 +22,11 @@ function App() {
         <div>
           <Navbar />
           <Switch>
-            {/* <PrivateRoute exact path='/' component={Home} />
+            <PrivateRoute exact path='/' component={Home} />
             <PrivateRoute exact path='/profile' component={Profile} />
             <PrivateRoute exact path='/channel/:channelName' component={Channel} />
-            <PrivateRoute exact path='/newPost' component={NewPost} /> */}
-            {/* <PrivateRoute exact path='/post/:post_id' component={PostPage} /> */}
-
-            <Route exact path='/' component={Home} />
-            <Route exact path='/profile' component={Profile} />
-            <Route exact path='/channel/:channelName' component={Channel} />
-            <Route exact path='/newPost' component={NewPost} />
-            <Route exact path='/post/:post_id' component={PostPage} />
-
+            <PrivateRoute exact path='/newPost' component={NewPost} />
+            <PrivateRoute exact path='/post/:post_id' component={PostPage} />
             {/* <Route exact path='/notifications' component={Notifications} /> */}
 
             <Route exact path='/signin' component={SignIn} />

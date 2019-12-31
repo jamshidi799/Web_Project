@@ -6,7 +6,7 @@ import {
 
 const initialState = {
     token: localStorage.getItem("token"),
-    isAuthenticated: null,
+    isAuthenticated: true,
     isLoading: false,
     user: { id: '1', username: 'ali', email: 'ali@gmail.com', password: '1234', bio: '', image_url: '', },
     users: [

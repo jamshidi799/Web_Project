@@ -8,16 +8,17 @@ export const getComments = () => (dispatch) => {
     })
 }
 
-export const getComment = (id) => (dispatch) => {
+export const getComment = (commentId) => (dispatch) => {
     // console.log('action before')
     return dispatch({
         type: GET_COMMENT,
-        payload: id
+        payload: commentId
     })
 }
 
 // ADD COMMENT
 export const addComment = Comment => (dispatch, getState) => {
+    console.log(getState())
     const id = getState().comment.comments.length + 1
     dispatch({
         type: ADD_COMMENT,
