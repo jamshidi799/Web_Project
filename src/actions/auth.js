@@ -6,6 +6,7 @@ import {
     LOGOUT,
     LOGIN_FAIL,
     REGISTER_FAIL,
+    GET_USERS,
 } from "./types";
 
 // CHECK TOKEN & LOAD USER
@@ -52,5 +53,12 @@ export const register = (newUser) => (dispatch, getState) => {
 export const logout = () => (dispatch, getState) => {
     return dispatch({
         type: LOGOUT,
+    })
+};
+
+// GET USERS
+export const getUsers = () => (dispatch) => {
+    return dispatch({
+        type: GET_USERS
     })
 };
