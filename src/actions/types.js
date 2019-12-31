@@ -18,6 +18,9 @@ export const LOGOUT = 'LOGOUT'
 export const REGISTER_FAIL = "REGISTER_FAIL";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 export const GET_USERS = "GET_USERS";
+export const FOLLOW = "FOLLOW";
+export const UNFOLLOW = "UNFOLLOW";
+
 
 
 export const GET_ERRORS = "GET_ERRORS";

@@ -21,7 +21,7 @@ class FollowList extends Component {
             backgroundColor: theme.palette.background.paper,
         },
         gridList: {
-            width: 300,
+            width: 200,
             height: 880,
         },
         icon: {
@@ -39,7 +39,7 @@ class FollowList extends Component {
                     <ListSubheader component="div">Profiles</ListSubheader>
                     <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
                     </GridListTile>
-                    {this.props.users.map(user => <ProfileCard username={user.username} />)}
+                    {this.props.users.map(user => <ProfileCard otherUser={user} key={user.id} />)}
                 </GridList>
             </div>
         );

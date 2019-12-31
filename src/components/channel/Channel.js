@@ -16,12 +16,13 @@ class Channel extends Component {
     }
 
     render() {
+        const channelName = this.props.match.params.channelName
         return (
             <React.Fragment>
                 <div>
                     <div className="d-flex justify-content-around">
                         <div className='m-5'>
-                            <AboutChannel username={this.state.channelName} massege={this.state.aboutChannel} />
+                            <AboutChannel username={channelName} massege={this.state.aboutChannel} />
                         </div>
                         <div>
                             <ListOfPosts />

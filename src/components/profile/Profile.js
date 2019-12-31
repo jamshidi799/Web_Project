@@ -14,7 +14,14 @@ class Profile extends Component {
         this.props.getPosts()
     }
 
+    getNumberOfPost = () => this.props.posts.filter(post => post.userid === this.props.user.id).length
+
+    getFollowerCount = () => this.props.user.followers.length
+
+    getFollowingCount = () => this.props.user.followings.length
+
     render() {
+        const user = this.props.user
         return (
             <div className="row">
                 <div className="col-8 container">
@@ -30,13 +37,13 @@ class Profile extends Component {
                                 <h3>Kim Kardashian</h3>
                                 <div className="row">
                                     <div className="col-3">
-                                        <h6>6 posts</h6>
+                                        <h6>{`${this.getNumberOfPost()} post`}</h6>
                                     </div>
                                     <div className="col-5">
-                                        <h6>132M followers</h6>
+                                        <h6>{`${this.getFollowerCount()} Follower`}</h6>
                                     </div>
                                     <div className="col-4">
-                                        <h6>22 following</h6>
+                                        <h6>{`${this.getFollowingCount()} Following`}</h6>
                                     </div>
                                 </div>
                                 <p className="font-weight-light">bio: Search for the keywords to learn more about each warning</p>
@@ -55,7 +62,7 @@ class Profile extends Component {
                         <Posts />
                     </div>
                 </div>
-                <div className="col-3 container">
+                <div className="col-2 container">
                     <FollowList />
                 </div>
             </div>
@@ -66,7 +73,8 @@ class Profile extends Component {
 
 const mapStateToProps = state => {
     return {
-        posts: state.post.posts
+        posts: state.post.posts,
+        user: state.auth.user
     }
 }
 

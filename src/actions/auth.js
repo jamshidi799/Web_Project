@@ -7,6 +7,8 @@ import {
     LOGIN_FAIL,
     REGISTER_FAIL,
     GET_USERS,
+    FOLLOW,
+    UNFOLLOW,
 } from "./types";
 
 // CHECK TOKEN & LOAD USER
@@ -61,4 +63,26 @@ export const getUsers = () => (dispatch) => {
     return dispatch({
         type: GET_USERS
     })
+};
+
+// FOLLOW
+export const follow = (id) => (dispatch, getState) => {
+    const currentUser = getState().auth.user
+    const isUserNew = currentUser.followings.find(followingId => followingId === id)
+    if (isUserNew === undefined)
+        return dispatch({
+            type: FOLLOW,
+            payload: id
+        })
+};
+
+// UN FOLLOW
+export const unfollow = (id) => (dispatch, getState) => {
+    const currentUser = getState().auth.user
+    const isUserNew = currentUser.followings.find(followingId => followingId === id)
+    if (isUserNew !== undefined)
+        return dispatch({
+            type: UNFOLLOW,
+            payload: id
+        })
 };
