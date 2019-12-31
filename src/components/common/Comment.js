@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { LIKE_COMMENT, DISLIKE_COMMENT } from '../actions/types'
-import { likeComment, dislikeComment } from '../actions/comments'
+import { LIKE_COMMENT, DISLIKE_COMMENT } from '../../actions/types'
+import { likeComment, dislikeComment } from '../../actions/comments'
 
-import likeIcon from '../icons/icons8-facebook-like-24.png'
-import unlikeIcon from '../icons/icons8-thumbs-down-24.png'
+import likeIcon from '../../icons/icons8-facebook-like-24.png'
+import unlikeIcon from '../../icons/icons8-thumbs-down-24.png'
 
 class Comment extends Component {
     onLikeClicked = () => {

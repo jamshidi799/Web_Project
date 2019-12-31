@@ -58,9 +58,11 @@ export const getPost = (id) => (dispatch) => {
 }
 
 // ADD POST
-export const addPost = post => (dispatch) => {
+export const addPost = post => (dispatch, getState) => {
+    const userid = getState().auth.user.id
+    const postid = String(getState().post.posts.length + 1)
     dispatch({
         type: ADD_POST,
-        payload: post
+        payload: { id: postid, userid, ...post }
     })
 }

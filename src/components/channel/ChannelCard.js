@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import img from '../../img/img1.jpg'
 import likeIcon from '../../icons/icons8-facebook-like-24.png'
 import { Link } from 'react-router-dom'
-import ImageAvatars from "../Avatar";
+import ImageAvatars from "../common/Avatar";
 
 class ChannelCard extends Component {
     render() {

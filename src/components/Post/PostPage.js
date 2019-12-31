@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getComments, addComment } from '../../actions/comments'
 import { getPost } from '../../actions/posts'
-import Comment from '../Comment'
+import Comment from '../common/Comment'
 
 
 import img from '../../img/img1.jpg'

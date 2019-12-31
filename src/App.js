@@ -3,10 +3,10 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './store'
 
-import Home from './components/Home'
-import Navbar from './components/Navbar'
-import Profile from './components/Profile'
-import Notifications from './components/Notifications'
+import Home from './components/common/Home'
+import Navbar from './components/common/Navbar'
+import Profile from './components/profile/Profile'
+import Notifications from './components/common/Notifications'
 import PostPage from './components/Post/PostPage';
 import SignIn from './components/Auth/SignIn'
 import SignUp from './components/Auth/SignUp';

@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { getPosts } from '../actions/posts'
-import PostCard from './Post/PostCard'
+import { getPosts } from '../../actions/posts'
+import PostCard from '../Post/PostCard'
 
-import img from '../img/kim.jpg'
+import img from '../../img/kim.jpg'
 import { Link } from 'react-router-dom'
-import Posts from './Post/Posts'
+import Posts from '../Post/Posts'
 
 class Profile extends Component {
     componentDidMount() {

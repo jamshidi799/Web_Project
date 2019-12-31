@@ -12,7 +12,6 @@ const initialState = {
 export default function (state = initialState, actions) {
     switch (actions.type) {
         case GET_POSTS:
-            console.log("reducer")
             return {
                 ...state,
                 // posts: actions.payload      for server response only
@@ -28,10 +27,9 @@ export default function (state = initialState, actions) {
                 posts: state.posts.filter(post => post.id !== actions.payload)
             }
         case ADD_POST:
-            const newPost = { id: String(state.posts.length), ...actions.payload }   // only for without server mode
             return {
                 ...state,
-                posts: [...state.posts, newPost]
+                posts: [...state.posts, actions.payload]
             }
         default:
             return state
