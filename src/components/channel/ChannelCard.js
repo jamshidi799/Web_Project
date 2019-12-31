@@ -11,7 +11,7 @@ class ChannelCard extends Component {
                 <div>
                     <div className=' d-flex justify-content-center'>
                         <div className="d-flex flex-column">
-                            <ImageAvatars/>
+                            <ImageAvatars />
                             <div className=' d-flex justify-content-center'>
                                 <Link to={this.props.username}><b>Cha {this.props.username}</b></Link>
                             </div>

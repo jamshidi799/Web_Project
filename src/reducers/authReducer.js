@@ -8,9 +8,10 @@ const initialState = {
     token: localStorage.getItem("token"),
     isAuthenticated: null,
     isLoading: false,
-    user: null,
+    user: { id: '1', username: 'ali', email: 'ali@gmail.com', password: '1234', bio: '', image_url: '', },
     users: [
-        { id: '1', username: 'ali', email: 'ali@gmail.com', password: '1234', bio: '', image_url: '', },
+        { id: '1', username: 'ali', email: 'ali@gmail.com', password: '1234', bio: 'aaaa', image_url: '', },
+        { id: '2', username: 'mohammad', email: 'mohammad@gmail.com', password: '1234', bio: 'mmmmm', image_url: '', },
     ]
 };
 

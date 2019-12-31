@@ -53,14 +53,13 @@ class PostPage extends Component {
                         <div className="collapse" id="collapseExample">
                             <form onSubmit={this.onCommentSubmit}>
                                 <div className="form-group">
-                                    <label>comment</label>
-                                    <input type="text" className="form-control" name="comment" id="exampleInputEmail1" value={this.state.comment} onChange={this.onCommentChange}
-                                        aria-describedby="emailHelp" placeholder="Enter email" />
-                                    <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                                    <input type="text" className="form-control" name="comment" id="comment" value={this.state.comment} onChange={this.onCommentChange}
+                                        placeholder="Enter comment" />
                                 </div>
                                 <button type="submit" className="btn btn-primary">Submit</button>
                             </form>
                         </div>
+                        <br />
                         {this.props.comments.map(comment => <Comment key={comment.id} comment={comment} />)}
                     </div>
 

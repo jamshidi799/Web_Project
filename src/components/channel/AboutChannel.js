@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -11,11 +11,12 @@ import img from '../../img/Animals_530.jpg'
 
 class AboutChannel extends Component {
     render() {
+        console.log(this.props)
         return (
             <Card>
                 <CardActionArea>
-                    <div className="card" style={{width: 18 + 'rem'}}>
-                    <img className="card-img-top" src={img} alt="post"/>
+                    <div className="card" style={{ width: 18 + 'rem' }}>
+                        <img className="card-img-top" src={img} alt="post" />
                     </div>
                     <CardMedia
                         image="/home/rez/WebstormProjects/Web_Project/src/img/img1.jpg"
@@ -35,7 +36,7 @@ class AboutChannel extends Component {
                     <Button size="small" color="primary">
                         Share Link
                     </Button>
-                    <ShareIcon/>
+                    <ShareIcon />
                 </CardActions>
             </Card>
         );
