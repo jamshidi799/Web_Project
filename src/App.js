@@ -3,16 +3,15 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './store'
 
-import Home from './components/'
-import Navbar from './components/Navbar'
-import Profile from './components/Profile'
-import Notifications from './components/notification/Notification'
-import PostPage from './components/Post/PostPage';
-import SignIn from './components/Auth/SignIn'
-import SignUp from './components/Auth/SignUp';
-import Channel from './components/channel/Channel'
-import NewPost from './components/Post/NewPost'
 
+import Home from "./components/common/Home";
+import Profile from "./components/profile/Profile";
+import Channel from "./components/channel/Channel";
+import NewPost from "./components/Post/NewPost";
+import PostPage from "./components/Post/PostPage";
+import SignIn from "./components/Auth/SignIn";
+import SignUp from "./components/Auth/SignUp";
+import Navbar from "./components/common/Navbar";
 import PrivateRoute from "./components/common/PrivateRoute";
 
 function App() {
