@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { register } from '../../actions/auth'
 
@@ -8,6 +8,7 @@ class SignUp extends Component {
         username: '',
         email: '',
         password: '',
+        isRegistered: false
     }
 
     onChange = e => {
@@ -18,11 +19,14 @@ class SignUp extends Component {
         e.preventDefault()
         const { username, email, password } = this.state
         const user = { username, email, password, bio: '', image_url: '', followers: [], following: [] }
+        this.setState({ ...this.state, isRegistered: true })
         this.props.register(user)
     }
 
     render() {
         const { username, email, password } = this.state
+        if (this.state.isRegistered)
+            return <Redirect to="/signin" />;
         return (
             <div className="col-md-6 mb-4 container" >
                 <div className="card">

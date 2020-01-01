@@ -10,9 +10,6 @@ import { Link } from 'react-router-dom'
 import Posts from '../Post/Posts'
 
 class Profile extends Component {
-    componentDidMount() {
-        this.props.getPosts()
-    }
 
     getNumberOfPost = () => this.props.posts.filter(post => post.userid === this.props.user.id).length
 
@@ -34,7 +31,7 @@ class Profile extends Component {
 
                             </div>
                             <div className="col-6">
-                                <h3>Kim Kardashian</h3>
+                                <h3>{user.username}</h3>
                                 <div className="row">
                                     <div className="col-3">
                                         <h6>{`${this.getNumberOfPost()} post`}</h6>
@@ -46,15 +43,18 @@ class Profile extends Component {
                                         <h6>{`${this.getFollowingCount()} Following`}</h6>
                                     </div>
                                 </div>
-                                <p className="font-weight-light">bio: Search for the keywords to learn more about each warning</p>
+                                <p className="text-muted">{user.bio}</p>
                             </div>
                         </div>
                         <div className="row text-center">
                             <div className="container">
-                                <Link to="/newPost/0">
-                                    <button className="btn btn-primary">new post</button>
+
+                                <Link to="/newPost/0" className='m-3'>
+                                    <button className="btn btn-dark">new post</button>
                                 </Link>
-                                <button className="btn btn-primary">new channel</button>
+                                <Link to="/newChannel">
+                                    <button className="btn btn-dark">new channel</button>
+                                </Link>
                             </div>
                         </div>
                     </div>

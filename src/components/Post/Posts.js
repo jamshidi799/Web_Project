@@ -4,11 +4,6 @@ import PostCard from './PostCard'
 import { getPosts } from '../../actions/posts'
 
 class Posts extends Component {
-
-    componentDidMount() {
-        this.props.getPosts()
-    }
-
     render() {
         const user = this.props.user
         return (
@@ -27,7 +22,6 @@ class Posts extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log("mapStateTo", state)
     return {
         posts: state.post.posts,
         user: state.auth.user

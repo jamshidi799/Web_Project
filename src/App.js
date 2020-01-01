@@ -12,6 +12,7 @@ import SignIn from './components/Auth/SignIn'
 import SignUp from './components/Auth/SignUp';
 import Channel from './components/channel/Channel'
 import NewPost from './components/Post/NewPost'
+import newChannel from './components/channel/NewChannel'
 
 import PrivateRoute from "./components/common/PrivateRoute";
 
@@ -25,6 +26,7 @@ function App() {
             <PrivateRoute exact path='/' component={Home} />
             <PrivateRoute exact path='/profile' component={Profile} />
             <PrivateRoute exact path='/channel/:channelName' component={Channel} />
+            <PrivateRoute exact path='/newChannel' component={newChannel} />
             <PrivateRoute exact path='/newPost/:channel_id' component={NewPost} />
             <PrivateRoute exact path='/post/:post_id' component={PostPage} />
             {/* <Route exact path='/notifications' component={Notifications} /> */}

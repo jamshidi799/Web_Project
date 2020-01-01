@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { Redirect } from "react-router-dom";
 import { connect } from 'react-redux'
-import { addPost } from '../../actions/posts'
+import { addChannel } from '../../actions/channel'
 
-class NewPost extends Component {
+class NewChannel extends Component {
     state = {
         title: "",
         content: "",
-        isPostCreated: false
+        isChannelCreated: false
     }
 
     onChange = e => {
@@ -16,24 +16,26 @@ class NewPost extends Component {
 
     onSubmit = e => {
         e.preventDefault()
-        const { title, content } = this.state
-        const channelid = this.props.match.params.chennel_id
-        const post = { channelid, title, content, image_url: "_" }
-        this.setState({ ...this.state, isPostCreated: true })
-        console.log(post)
-        this.props.addPost(post)
+        const { name, title, content } = this.state
+        const channel = { userid: this.props.user.id, name, title, content, image_url: "_" }
+        this.setState({ ...this.state, isChannelCreated: true })
+        this.props.addChannel(channel)
     }
 
 
     render() {
-        const { title, content } = this.state
-        if (this.state.isPostCreated)
+        const { name, title, content } = this.state
+        if (this.state.isChannelCreated)
             return <Redirect to="/profile" />;
         return (
             <div className="container col-md-6 mb-4">
                 <form className="jumbotron" onSubmit={this.onSubmit}>
-                    <h2 className="text-center text-success">create new post</h2>
+                    <h2 className="text-center text-success">create new channel</h2>
                     <br />
+                    <div className="form-group">
+                        <label >Name</label>
+                        <input type="text" name="name" className="form-control" onChange={this.onChange} value={name} required />
+                    </div>
                     <div className="form-group">
                         <label >Title</label>
                         <input type="text" name="title" className="form-control" onChange={this.onChange} value={title} required />
@@ -53,4 +55,10 @@ class NewPost extends Component {
     }
 }
 
-export default connect(null, { addPost })(NewPost)
+const mapStateToProps = state => {
+    return {
+        user: state.auth.user
+    }
+}
+
+export default connect(mapStateToProps, { addChannel })(NewChannel)

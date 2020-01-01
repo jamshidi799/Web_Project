@@ -45,7 +45,19 @@ class SignIn extends Component {
                             <div className="text-center">
                                 <button className="btn btn-sm btn-info">SignIn</button>
                             </div>
+                            <a className="btn text-secondary" role="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                forget password?
+                            </a>
                         </form>
+                        <div className="collapse" id="collapseExample">
+                            <form className="container">
+                                <div className="form-group">
+                                    <input type="email" className="form-control" name="email" id="email"
+                                        placeholder="Enter email" />
+                                </div>
+                                <button type="submit" className="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             )
