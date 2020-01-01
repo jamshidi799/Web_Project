@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Example from './Modal'
 
 class Navbar extends Component {
     render() {
@@ -11,10 +12,10 @@ class Navbar extends Component {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
-                        <Link to="/channels" className="nav-item nav-link">Channels</Link>
                         <Link to="/signin" className="nav-item nav-link ">Signin</Link>
                         <Link to="/profile" className="nav-item nav-link">Profile</Link>
                         <Link to="/signup" className="nav-item nav-link">signup</Link>
+                        <Example />
                     </div>
                 </div>
                 <div className="navbar-collapse collapse">
