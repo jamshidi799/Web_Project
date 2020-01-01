@@ -15,6 +15,7 @@ import NewPost from './components/Post/NewPost'
 import newChannel from './components/channel/NewChannel'
 
 import PrivateRoute from "./components/common/PrivateRoute";
+import EditProfile from './components/profile/EditProfile';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <PrivateRoute exact path='/newChannel' component={newChannel} />
             <PrivateRoute exact path='/newPost/:channel_id' component={NewPost} />
             <PrivateRoute exact path='/post/:post_id' component={PostPage} />
+            <PrivateRoute exact path='/profile/edit' component={EditProfile} />
             {/* <Route exact path='/notifications' component={Notifications} /> */}
 
             <Route exact path='/signin' component={SignIn} />

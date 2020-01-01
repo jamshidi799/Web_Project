@@ -23,6 +23,7 @@ export const LOGIN = 'LOGIN'
 export const LOGOUT = 'LOGOUT'
 export const REGISTER_FAIL = "REGISTER_FAIL";
 export const LOGIN_FAIL = "LOGIN_FAIL";
+export const EDIT = "EDIT";
 export const GET_USERS = "GET_USERS";
 export const FOLLOW = "FOLLOW";
 export const UNFOLLOW = "UNFOLLOW";

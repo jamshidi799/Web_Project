@@ -4,6 +4,7 @@ import {
     REGISTER,
     LOGIN,
     LOGOUT,
+    EDIT,
     LOGIN_FAIL,
     REGISTER_FAIL,
     GET_USERS,
@@ -49,6 +50,14 @@ export const register = (newUser) => (dispatch, getState) => {
             type: REGISTER_FAIL
         })
     }
+};
+
+// EDIT PROFILE
+export const edit = (editedUser) => (dispatch, getState) => {
+    return dispatch({
+        type: EDIT,
+        payload: { ...editedUser }
+    })
 };
 
 // LOGOUT USER

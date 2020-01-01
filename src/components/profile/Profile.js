@@ -6,6 +6,7 @@ import PostCard from '../Post/PostCard'
 import FollowList from './FollowList'
 
 import img from '../../img/kim.jpg'
+import editIcon from '../../img/edit.png'
 import { Link } from 'react-router-dom'
 import Posts from '../Post/Posts'
 
@@ -31,7 +32,13 @@ class Profile extends Component {
 
                             </div>
                             <div className="col-6">
-                                <h3>{user.username}</h3>
+                                <div className='row d-flex align-items-center'>
+                                    <h3 className="m-3">{user.username}</h3>
+                                    <div>
+                                        <Link to="/profile/edit"><img src={editIcon} /></Link>
+                                    </div>
+                                </div>
+
                                 <div className="row">
                                     <div className="col-3">
                                         <h6>{`${this.getNumberOfPost()} post`}</h6>

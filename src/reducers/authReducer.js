@@ -2,6 +2,7 @@ import {
     REGISTER,
     LOGIN,
     LOGOUT,
+    EDIT,
     FOLLOW,
     UNFOLLOW,
 } from "../actions/types";
@@ -37,6 +38,17 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 isAuthenticated: false,
+            }
+        case EDIT:
+            const newList = state.users.map(user => {
+                if (user.id === action.payload.id)
+                    return action.payload
+                return user
+            })
+            return {
+                ...state,
+                user: action.payload,
+                users: newList
             }
         case FOLLOW:
             const addToFollowing = { ...state.user, followings: [...state.user.followings, action.payload] }
