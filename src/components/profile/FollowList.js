@@ -21,7 +21,7 @@ class FollowList extends Component {
             backgroundColor: theme.palette.background.paper,
         },
         gridList: {
-            width: 200,
+            width: 250,
             height: 880,
         },
         icon: {
@@ -36,9 +36,10 @@ class FollowList extends Component {
         return (
             <div className='d-flex justify-content-center'>
                 <GridList cellHeight={"auto"} className={classes.gridList}>
-                    <ListSubheader component="div">Profiles</ListSubheader>
+                    <ListSubheader component="div"><h3>Profiles</h3></ListSubheader>
                     <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
                     </GridListTile>
+                    <hr />
                     {this.props.users.map(user => <ProfileCard otherUser={user} key={user.id} />)}
                 </GridList>
             </div>

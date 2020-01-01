@@ -24,7 +24,7 @@ class Channel extends Component {
             <React.Fragment>
                 <div>
                     <div className="d-flex justify-content-around">
-                        <div className="m-3">
+                        <div className="m-3 fixed">
                             <ListOfAuthors channel={channel} />
                         </div>
                         <div>

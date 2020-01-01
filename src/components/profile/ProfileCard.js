@@ -25,17 +25,20 @@ class ProfileCard extends Component {
     render() {
         return (
             <div style={{ width: 23 + 'rem' }}>
-                <div>
-
-                    <div className="d-flex justify-content-between align-items-center">
-                        <ImageAvatars avatar_src={smProfile} />
-                        <div className=' d-flex align-items-center justify-content-around'>
-                            <b>{this.props.otherUser.username}</b>
+                <div className="container-fluid">
+                    <div className="row align-items-center">
+                        <div className="col-4">
+                            <ImageAvatars avatar_src={smProfile} />
+                        </div>
+                        <div className='col-4'>
+                            <p className="text-secondary">{this.props.otherUser.username}</p>
+                        </div>
+                        <div className="col-4">
                             {this.getButton()}
                         </div>
                     </div>
                 </div>
-            </div >
+            </div>
         )
     }
 }

@@ -16,8 +16,8 @@ class Posts extends Component {
                 {this.props.posts.map(post => {
                     if (post.userid === user.id)
                         return (
-                            <div className="card" style={{ width: 20 + 'rem' }}>
-                                <PostCard key={post.id} post={post} />
+                            <div className="card" style={{ width: 20 + 'rem' }} key={post.id}>
+                                <PostCard post={post} />
                             </div>
                         )
                 })}
