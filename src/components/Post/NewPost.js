@@ -15,7 +15,8 @@ class NewPost extends Component {
     onSubmit = e => {
         e.preventDefault()
         const { title, content } = this.state
-        const post = { title, content, image_url: "_" }
+        const channelid = this.props.match.params.chennel_id
+        const post = { channelid, title, content, image_url: "_" }
         console.log(post)
         this.props.addPost(post)
     }

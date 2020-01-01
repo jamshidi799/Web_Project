@@ -1,11 +1,12 @@
 import { GET_POSTS, ADD_POST, GET_POST, EDIT_POST, DELETE_POST } from "../actions/types"
 
 const initialState = {
-    currentPost: { id: '1', userid: '1', title: 'help me find peach', content: 'posts: state.posts.filter(post => post.id !== actions.payload)' },
+    currentPost: { id: '1', userid: '1', channelid: '0', title: 'help me find peach', content: 'posts: state.posts.filter(post => post.id !== actions.payload)' },
     posts: [
-        { id: '1', userid: '1', title: 'help me find peach', content: 'posts: state.posts.filter(post => post.id !== actions.payload)' },
-        { id: '2', userid: '2', title: 'collect all the stars', content: 'switch (actions.type) {' },
-        { id: '3', userid: '3', title: 'egg hunt with yoshi', content: 'blah blah blah' }
+        { id: '1', userid: '1', channelid: '0', title: 'help me find peach', content: 'posts: state.posts.filter(post => post.id !== actions.payload)' },
+        { id: '2', userid: '2', channelid: '1', title: 'collect all the stars', content: 'switch (actions.type) {' },
+        { id: '3', userid: '3', channelid: '1', title: 'egg hunt with yoshi', content: 'blah blah blah' },
+        { id: '4', userid: '4', channelid: '1', title: 'egg hunt with yoshi', content: 'blah blah blah' }
     ]
 }
 

@@ -4,11 +4,10 @@ import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
-import ChannelCard from "./ChannelCard";
 import ListSubheader from "@material-ui/core/ListSubheader";
 
 
-class ListOfChannel extends Component {
+class ListOfAuthors extends Component {
     useStyles = makeStyles(theme => ({
         root: {
             display: 'flex',
@@ -26,6 +25,20 @@ class ListOfChannel extends Component {
         },
     }));
 
+    onAddClicked = () => {
+
+    }
+
+    onRemoveClicked = () => {
+
+    }
+
+    getUserCard = (user) => {
+        return <div>
+            hell
+        </div>
+    }
+
     render() {
         const classes = this.useStyles
         return (
@@ -33,8 +46,8 @@ class ListOfChannel extends Component {
                 <GridList cellHeight={"auto"} className={classes.gridList}>
                     <ListSubheader component="div">Channels</ListSubheader>
                     <GridListTile key="Subheader" cols={1} style={{ height: 'auto' }}>
+                        {this.props.users.map(user => this.getUserCard(user))}
                     </GridListTile>
-                    {this.props.channels.map(channel => <ChannelCard key={channel.id} channel={channel} closeModal={this.props.close} />)}
                 </GridList>
             </div>
         );
@@ -44,8 +57,8 @@ class ListOfChannel extends Component {
 
 const mapStateToProps = state => {
     return {
-        channels: state.channel.channels,
+        users: state.auth.users,
     }
 }
 
-export default connect(mapStateToProps, {})(ListOfChannel)
+export default connect(mapStateToProps, {})(ListOfAuthors)

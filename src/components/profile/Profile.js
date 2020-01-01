@@ -51,7 +51,7 @@ class Profile extends Component {
                         </div>
                         <div className="row text-center">
                             <div className="container">
-                                <Link to="/newPost">
+                                <Link to="/newPost/0">
                                     <button className="btn btn-primary">new post</button>
                                 </Link>
                                 <button className="btn btn-primary">new channel</button>
