@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import Example from './Modal'
+import TransitionsModal from "../notification/Modal";
 
 class Navbar extends Component {
     render() {
@@ -22,12 +23,13 @@ class Navbar extends Component {
                 </div>
                 <div className="navbar-collapse collapse">
                     <ul className="navbar-nav ml-auto">
-                        <li className="nav-item">
-                            <Link to="/notifications" className="nav-item nav-link right">Notifications</Link>
+                        <li>
+                            <TransitionsModal content="notification" buttonName="notification" variant="contained"/>
                         </li>
                         <li className="nav-item">
                             <Link to="/signin" className="nav-item nav-link">Logout</Link>
                         </li>
+
                     </ul>
                 </div>
             </nav>
