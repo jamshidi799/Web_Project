@@ -52,7 +52,7 @@ export const register = (newUser) => (dispatch, getState) => {
 };
 
 // LOGOUT USER
-export const logout = () => (dispatch, getState) => {
+export const logout = () => (dispatch) => {
     return dispatch({
         type: LOGOUT,
     })

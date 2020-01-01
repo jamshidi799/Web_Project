@@ -33,6 +33,11 @@ export default function (state = initialState, action) {
                 isAuthenticated: true,
                 user: action.payload,
             }
+        case LOGOUT:
+            return {
+                ...state,
+                isAuthenticated: false,
+            }
         case FOLLOW:
             const addToFollowing = { ...state.user, followings: [...state.user.followings, action.payload] }
             const newUsersList = state.users.map(user => {
