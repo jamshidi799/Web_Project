@@ -1,8 +1,10 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ListOfPosts from "./ListOfPosts";
 import AboutChannel from "./AboutChannel";
-import ListOfChannel from "./ListOfChannel";
+import ListOfAuthors from './ListOfAuthors';
 
 class Channel extends Component {
     state = {
@@ -16,19 +18,20 @@ class Channel extends Component {
     }
 
     render() {
-        const channelName = this.props.match.params.channelName;
+        const channelId = this.props.match.params.channelName
+        const channel = this.props.channels.find(channel => channel.id === channelId)
         return (
             <React.Fragment>
                 <div>
                     <div className="d-flex justify-content-around">
-                        <div className='m-5'>
-                            <AboutChannel username={channelName} massege={this.state.aboutChannel}/>
+                        <div className="m-3 fixed">
+                            <ListOfAuthors channel={channel} />
                         </div>
                         <div>
-                            <ListOfPosts/>
+                            <ListOfPosts className="m-3" channel={channel} />
                         </div>
-                        <div>
-                            <ListOfChannel/>
+                        <div className='m-3'>
+                            <AboutChannel channel={channel} />
                         </div>
                     </div>
                 </div>
@@ -37,4 +40,10 @@ class Channel extends Component {
     }
 }
 
-export default Channel
+const mapStateToProps = state => {
+    return {
+        channels: state.channel.channels,
+    }
+}
+
+export default connect(mapStateToProps, {})(Channel)

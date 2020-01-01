@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './store'
 
-import Home from './components/Home'
+import Home from './components/'
 import Navbar from './components/Navbar'
 import Profile from './components/Profile'
 import Notifications from './components/notification/Notification'
@@ -25,7 +25,7 @@ function App() {
             <PrivateRoute exact path='/' component={Home} />
             <PrivateRoute exact path='/profile' component={Profile} />
             <PrivateRoute exact path='/channel/:channelName' component={Channel} />
-            <PrivateRoute exact path='/newPost' component={NewPost} />
+            <PrivateRoute exact path='/newPost/:channel_id' component={NewPost} />
             <PrivateRoute exact path='/post/:post_id' component={PostPage} />
             {/* <Route exact path='/notifications' component={Notifications} /> */}
 

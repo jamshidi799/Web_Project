@@ -17,7 +17,7 @@ class SignUp extends Component {
     onSubmit = e => {
         e.preventDefault()
         const { username, email, password } = this.state
-        const user = { username, email, password, bio: '', image_url: '', }
+        const user = { username, email, password, bio: '', image_url: '', followers: [], following: [] }
         this.props.register(user)
     }
 

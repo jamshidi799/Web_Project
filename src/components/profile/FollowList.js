@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
+import ProfileCard from "./ProfileCard";
+import { getUsers } from '../../actions/auth'
+
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
+import ListSubheader from "@material-ui/core/ListSubheader";
 
-import PostCard from "../Post/PostCard";
 
+class FollowList extends Component {
 
-class ListOfPosts extends Component {
     useStyles = makeStyles(theme => ({
         root: {
             display: 'flex',
@@ -18,40 +21,36 @@ class ListOfPosts extends Component {
             backgroundColor: theme.palette.background.paper,
         },
         gridList: {
-            width: 536,
+            width: 250,
             height: 880,
         },
         icon: {
             color: 'rgba(255, 255, 255, 0.54)',
         },
-    }));
+    }))
+
+
 
     render() {
         const classes = this.useStyles;
         return (
-            <React.Fragment>
-                <GridList cellHeight={180} className={classes.gridList}>
+            <div className='d-flex justify-content-center'>
+                <GridList cellHeight={"auto"} className={classes.gridList}>
+                    <ListSubheader component="div"><h3>Profiles</h3></ListSubheader>
                     <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-                        {this.props.posts.map(post => {
-                            if (post.channelid === this.props.channel.id)
-                                return (
-                                    <div className="card" style={{ width: 50 + 'rem' }}>
-                                        <PostCard key={post.id} post={post} />
-                                    </div>)
-                        })}
                     </GridListTile>
-
+                    <hr />
+                    {this.props.users.map(user => <ProfileCard otherUser={user} key={user.id} />)}
                 </GridList>
-            </React.Fragment >
+            </div>
         );
     }
-
 };
 
 const mapStateToProps = state => {
     return {
-        posts: state.post.posts,
+        users: state.auth.users
     }
 }
 
-export default connect(mapStateToProps, {})(ListOfPosts)
+export default connect(mapStateToProps, { getUsers })(FollowList)

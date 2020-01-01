@@ -15,7 +15,11 @@ class Posts extends Component {
             <Fragment>
                 {this.props.posts.map(post => {
                     if (post.userid === user.id)
-                        return <PostCard key={post.id} post={post} />
+                        return (
+                            <div className="card" style={{ width: 20 + 'rem' }} key={post.id}>
+                                <PostCard post={post} />
+                            </div>
+                        )
                 })}
             </Fragment>
         )
