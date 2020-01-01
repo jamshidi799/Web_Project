@@ -6,7 +6,7 @@ import store from './store'
 import Home from './components/Home'
 import Navbar from './components/Navbar'
 import Profile from './components/Profile'
-import Notifications from './components/Notifications'
+import Notifications from './components/notification/Notification'
 import PostPage from './components/Post/PostPage';
 import SignIn from './components/Auth/SignIn'
 import SignUp from './components/Auth/SignUp';
