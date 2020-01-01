@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 import Example from './Modal'
 
 class Navbar extends Component {
@@ -7,7 +7,9 @@ class Navbar extends Component {
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
                 <Link to="/" className="navbar-brand">Home</Link>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <button className="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -15,7 +17,7 @@ class Navbar extends Component {
                         <Link to="/signin" className="nav-item nav-link ">Signin</Link>
                         <Link to="/profile" className="nav-item nav-link">Profile</Link>
                         <Link to="/signup" className="nav-item nav-link">signup</Link>
-                        <Example />
+                        <Example/>
                     </div>
                 </div>
                 <div className="navbar-collapse collapse">
