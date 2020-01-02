@@ -6,10 +6,12 @@ import Posts from '../Post/Posts'
 class Home extends Component {
     render() {
         return (
-            <div className="row home">
-                <SideBar />
-                <div className="col-sm-10 bg-dark posts">
-                    <div className="row">
+            <div className="wrapper">
+                <div className="">
+                    <SideBar />
+                </div>
+                <div className="">
+                    <div className="row m-3">
                         <Posts />
                     </div>
 

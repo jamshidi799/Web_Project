@@ -50,6 +50,9 @@ class Navbar extends Component {
                     <div className="navbar-nav">
                         <Link to="/profile" className="nav-item nav-link">Profile</Link>
                         <Example />
+                        <button type="button" id="sidebarCollapse" class="btn btn-info">
+                            <span>Toggle Sidebar</span>
+                        </button>
                     </div>
                 </div>
                 <div className="navbar-collapse collapse">
