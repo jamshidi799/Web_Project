@@ -6,14 +6,10 @@ import Posts from '../Post/Posts'
 class Home extends Component {
     render() {
         return (
-            <div className="wrapper">
-                <SideBar />
-                <div className="container-fluid">
-                    <div className="row d-flex justify-content-around flex-wrap">
-                        <Posts />
-                    </div>
+            <div className="container-fluid">
+                <div className="row text-center text-lg-left">
+                    <Posts />
                 </div>
-
             </div>
         )
     }

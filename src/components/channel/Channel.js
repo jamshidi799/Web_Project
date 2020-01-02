@@ -22,15 +22,15 @@ class Channel extends Component {
         const channel = this.props.channels.find(channel => channel.id === channelId)
         return (
             <React.Fragment>
-                <div>
-                    <div className="d-flex justify-content-around">
-                        <div className="m-3 fixed">
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-3 m-3">
                             <ListOfAuthors channel={channel} />
                         </div>
-                        <div>
-                            <ListOfPosts className="m-3" channel={channel} />
+                        <div className="col-6">
+                            <ListOfPosts channel={channel} />
                         </div>
-                        <div className='m-3'>
+                        <div className='col-2'>
                             <AboutChannel channel={channel} />
                         </div>
                     </div>

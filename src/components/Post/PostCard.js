@@ -8,14 +8,16 @@ class PostCard extends Component {
         const { id, title } = this.props.post
         return (
             <Fragment>
-                <img className="card-img-top" src={img} alt="post" />
-                <div className="card-body">
-                    <Link to={`/post/${id}`}><h5 className="card-title">{title}</h5></Link>
-                    <hr />
-                    <div><span>132,231 views</span></div>
-                    <img src={likeIcon} alt="like" /> <span>3.1k   </span>
-                    <img src={likeIcon} alt="unlike" /> <span>123    </span>
+                <div className="card">
+                    <img className="card-img-top" src={img} alt="post" />
+                    <div className="card-body">
+                        <Link to={`/post/${id}`}><h5 className="card-title">{title}</h5></Link>
+                        <hr />
+                        <div><span>132,231 views</span></div>
+                        <img src={likeIcon} alt="like" /> <span>3.1k   </span>
+                        <img src={likeIcon} alt="unlike" /> <span>123    </span>
 
+                    </div>
                 </div>
             </Fragment>
         )

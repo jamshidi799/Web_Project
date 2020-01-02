@@ -35,8 +35,8 @@ class ListOfPosts extends Component {
                         {this.props.posts.map(post => {
                             if (post.channelid === this.props.channel.id)
                                 return (
-                                    <div className="card" style={{ width: 50 + 'rem' }}>
-                                        <PostCard key={post.id} post={post} />
+                                    <div className="card" style={{ width: "100%" }} key={post.id}>
+                                        <PostCard post={post} />
                                     </div>)
                         })}
                     </GridListTile>

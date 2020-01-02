@@ -14,7 +14,7 @@ class AboutChannel extends Component {
         return (
             <Card>
                 <CardActionArea>
-                    <div className="card" style={{ width: 18 + 'rem' }}>
+                    <div className="card" style={{ width: 13 + 'rem' }}>
                         <img className="card-img-top" src={img} alt="post" />
                     </div>
                     <CardMedia

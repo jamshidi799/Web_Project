@@ -5,6 +5,8 @@ import Example from './Modal'
 import { logout } from '../../actions/auth'
 import TransitionsModal from "../notification/Modal";
 
+import sidebarIcon from '../../img/sidebar.png'
+
 class Navbar extends Component {
     logout = () => {
         this.props.logout()
@@ -40,7 +42,9 @@ class Navbar extends Component {
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-                <Link to="/" className="navbar-brand">Home</Link>
+                <div id="sidebarCollapse" className="btn navbar-brand">
+                    <img src={sidebarIcon} width="30px" />
+                </div>
                 <button className="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -48,11 +52,9 @@ class Navbar extends Component {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
+                        <Link to="/" className="nav-item nav-link">Home</Link>
                         <Link to="/profile" className="nav-item nav-link">Profile</Link>
                         <Example />
-                        <button type="button" id="sidebarCollapse" class="btn btn-info">
-                            <span>Toggle Sidebar</span>
-                        </button>
                     </div>
                 </div>
                 <div className="navbar-collapse collapse">
@@ -68,7 +70,7 @@ class Navbar extends Component {
 const mapStateToProps = state => {
     return {
         isAuthenticated: state.auth.isAuthenticated,
-        user: state.auth.user
+        user: state.auth.user,
     }
 }
 

@@ -1,51 +1,25 @@
 import React, { Component, Fragment } from 'react'
+import { Link } from 'react-router-dom'
 
 const SideBar = () => {
     return (
         <Fragment>
             <nav id="sidebar">
-                <div className="sidebar-header">
-                    <h3>Bootstrap Sidebar</h3>
-                </div>
-
                 <ul className="list-unstyled components m-3">
-                    <p>Dummy Heading</p>
                     <li className="active">
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Home</a>
-                        <ul className="collapse list-unstyled" id="homeSubmenu">
-                            <li>
-                                <a href="#">Home 1</a>
-                            </li>
-                            <li>
-                                <a href="#">Home 2</a>
-                            </li>
-                            <li>
-                                <a href="#">Home 3</a>
-                            </li>
-                        </ul>
+                        <Link to="/" aria-expanded="false" >Home</Link>
                     </li>
                     <li>
-                        <a href="#">About</a>
+                        <Link to="/">Trending</Link>
                     </li>
                     <li>
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Pages</a>
-                        <ul className="collapse list-unstyled" id="pageSubmenu">
-                            <li>
-                                <a href="#">Page 1</a>
-                            </li>
-                            <li>
-                                <a href="#">Page 2</a>
-                            </li>
-                            <li>
-                                <a href="#">Page 3</a>
-                            </li>
-                        </ul>
+                        <Link to="/" >Liked Post</Link>
                     </li>
                     <li>
-                        <a href="#">Portfolio</a>
+                        <Link to="/">Subscriptions</Link>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <Link to="/">Latest</Link>
                     </li>
                 </ul>
             </nav>

@@ -66,7 +66,7 @@ class Profile extends Component {
                         </div>
                     </div>
                     <div className="container">
-                        <div className="jumbotron row bg-light">
+                        <div className="row text-center text-lg-left">
                             <Posts />
                         </div>
                     </div>

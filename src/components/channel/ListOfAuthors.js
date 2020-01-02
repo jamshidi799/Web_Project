@@ -38,7 +38,7 @@ class ListOfAuthors extends Component {
 
     getUserCard = (user) => {
         return (
-            <div className="container-fluid">
+            <div className="container-fluid" key={user.id}>
                 <div className="row align-items-center">
                     <div className="col-4">
                         <ImageAvatars avatar_src={smProfile} />
