@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Example from './Modal'
 import { logout } from '../../actions/auth'
+import TransitionsModal from "../notification/Modal";
 
 class Navbar extends Component {
     logout = () => {
@@ -19,8 +20,8 @@ class Navbar extends Component {
                     <li className="nav-item">
                         <button className="nav-item nav-link btn" onClick={this.logout}>Logout</button>
                     </li>
-                    <li className="nav-item">
-                        <Link to="/notifications" className="nav-item nav-link right">Notifications</Link>
+                    <li>
+                        <TransitionsModal content="notification" buttonName="notification" variant="contained" />
                     </li>
                 </Fragment>
             )
@@ -40,7 +41,9 @@ class Navbar extends Component {
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
                 <Link to="/" className="navbar-brand">Home</Link>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <button className="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
