@@ -7,15 +7,13 @@ class Home extends Component {
     render() {
         return (
             <div className="wrapper">
-                <div className="">
-                    <SideBar />
-                </div>
-                <div className="">
-                    <div className="row m-3">
+                <SideBar />
+                <div className="container-fluid">
+                    <div className="row d-flex justify-content-around flex-wrap">
                         <Posts />
                     </div>
-
                 </div>
+
             </div>
         )
     }
