@@ -37,7 +37,7 @@ class EditProfile extends Component {
     render() {
         const { username, email, password, bio } = this.state.user
         if (this.state.isRegistered)
-            return <Redirect to="/profile" />;
+            return <Redirect to={`/profile/${this.state.user.username}`} />;
         return (
             <div className="col-md-6 mb-4 container" >
                 <div className="card">

@@ -28,7 +28,7 @@ class NewPost extends Component {
     render() {
         const { title, content } = this.state
         if (this.state.isPostCreated)
-            return <Redirect to="/profile" />;
+            return <Redirect to={`/profile/${this.props.user.username}`} />;
         return (
             <div className="container col-md-6 mb-4">
                 <form className="jumbotron" onSubmit={this.onSubmit}>
@@ -53,4 +53,11 @@ class NewPost extends Component {
     }
 }
 
-export default connect(null, { addPost })(NewPost)
+const mapStateToProps = state => {
+    return {
+        user: state.auth.user,
+    }
+}
+
+
+export default connect(mapStateToProps, { addPost })(NewPost)

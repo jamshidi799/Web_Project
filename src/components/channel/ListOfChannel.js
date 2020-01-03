@@ -29,7 +29,7 @@ class ListOfChannel extends Component {
     render() {
         const classes = this.useStyles
         return (
-            <div className='d-flex justify-content-center'>
+            <div className='container'>
                 <GridList cellHeight={"auto"} className={classes.gridList}>
                     <ListSubheader component="div">Channels</ListSubheader>
                     <GridListTile key="Subheader" cols={1} style={{ height: 'auto' }}>
