@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -58,15 +58,32 @@ class ListOfAuthors extends Component {
     render() {
         const classes = this.useStyles
         return (
-            <div className='d-flex justify-content-center'>
-                <GridList cellHeight={"auto"} className={classes.gridList}>
-                    <ListSubheader component="div"><h4>Authors</h4></ListSubheader>
-                    <hr />
-                    <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-                        {this.props.users.map(user => this.getUserCard(user))}
-                    </GridListTile>
-                </GridList>
-            </div>
+            <Fragment>
+                <div className="container-fluid">
+                    <div className="d-flex align-items-center justify-content-row">
+
+                        <button className="btn btn-sm btn-info mr-1">follow</button>
+                        <span>  </span>
+                        <button className="btn btn-sm btn-info">add post</button>
+                    </div>
+                </div>
+                <div className='d-flex justify-content-center'>
+                    <GridList cellHeight={"auto"} className={classes.gridList}>
+                        <ListSubheader component="div">
+                            <hr />
+                            <h4>Authors</h4>
+                        </ListSubheader>
+                        <hr />
+                        <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
+                            {this.props.users.map(user => this.getUserCard(user))}
+                            <div className="container">
+
+                            </div>
+                        </GridListTile>
+                    </GridList>
+                </div>
+            </Fragment>
+
         );
     }
 

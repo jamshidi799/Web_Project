@@ -29,6 +29,20 @@ class Profile extends Component {
         return <button className="btn btn-sm btn-info" onClick={() => this.onUnFollowClicked(user)}>unfollow</button>
     }
 
+    getNewPostBtn = (user) => {
+        if (user.id === this.props.user.id)
+            return (
+                <Fragment>
+                    <Link to="/newPost/0" className='m-3'>
+                        <button className="btn btn-dark">new post</button>
+                    </Link>
+                    <Link to="/newChannel">
+                        <button className="btn btn-dark">new channel</button>
+                    </Link>
+                </Fragment>
+            )
+    }
+
     onFollowClicked = (user) => {
         this.props.follow(user.id)
     }
@@ -81,12 +95,10 @@ class Profile extends Component {
                         <div className="row text-center">
                             <div className="container">
 
-                                <Link to="/newPost/0" className='m-3'>
-                                    <button className="btn btn-dark">new post</button>
-                                </Link>
-                                <Link to="/newChannel">
-                                    <button className="btn btn-dark">new channel</button>
-                                </Link>
+                                {
+                                    this.getNewPostBtn(user)
+                                }
+
                             </div>
                         </div>
                     </div>

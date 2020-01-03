@@ -33,12 +33,24 @@ class PostPage extends Component {
         this.setState({ [e.target.name]: e.target.value })
     }
 
+    getButtons = () => {
+        if (this.props.currentPost.userid === this.props.user.id)
+            return (
+                <div className="mb-3">
+                    <button className="btn btn-sm btn-dark">edit</button>
+                    <span>  </span>
+                    <button className="btn btn-sm btn-dark">delete</button>
+                </div>
+            )
+    }
+
 
     render() {
         const { id, title, content } = this.props.currentPost
         return (
             <div className="container">
                 <div className="jumbotron">
+                    {this.getButtons()}
                     <img className="card-img-top" src={img} alt="post" />
                     <div className="card-body">
                         <h3 className="card-title text-success">{title}</h3>
@@ -82,7 +94,8 @@ const mapStateToProps = state => {
     // console.log("mapStateTo", state)
     return {
         comments: state.comment.comments,
-        currentPost: state.post.currentPost
+        currentPost: state.post.currentPost,
+        user: state.auth.user
     }
 }
 

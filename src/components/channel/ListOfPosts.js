@@ -26,6 +26,11 @@ class ListOfPosts extends Component {
         },
     }));
 
+    getDeletePostBtn = () => {
+        if (this.props.channel.userid === this.props.user.id)
+            return <button className="btn btn-sm btn-secondary">delete</button>
+    }
+
     render() {
         const classes = this.useStyles;
         return (
@@ -35,9 +40,15 @@ class ListOfPosts extends Component {
                         {this.props.posts.map(post => {
                             if (post.channelid === this.props.channel.id)
                                 return (
-                                    <div className="card" style={{ width: "100%" }} key={post.id}>
-                                        <PostCard post={post} />
-                                    </div>)
+                                    <div className="container-fluid m-3" key={post.id}>
+                                        <div className="card" style={{ width: "100%" }} >
+                                            <PostCard post={post} />
+                                            {this.getDeletePostBtn()}
+                                        </div>
+                                        <hr />
+                                    </div>
+
+                                )
                         })}
                     </GridListTile>
 
@@ -51,6 +62,7 @@ class ListOfPosts extends Component {
 const mapStateToProps = state => {
     return {
         posts: state.post.posts,
+        user: state.auth.user
     }
 }
 
