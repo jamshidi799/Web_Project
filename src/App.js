@@ -5,6 +5,7 @@ import store from './store'
 
 
 import Home from "./components/common/Home";
+import SearchPage from "./components/search/SearchPage";
 import Profile from "./components/profile/Profile";
 import Channel from "./components/channel/Channel";
 import NewChannel from "./components/channel/NewChannel";
@@ -34,6 +35,7 @@ function App() {
               <PrivateRoute exact path='/newPost/:channel_id' component={NewPost} />
               <PrivateRoute exact path='/post/:post_id' component={PostPage} />
               <PrivateRoute exact path='/profile/edit' component={EditProfile} />
+              <PrivateRoute exact path='/search/:search' component={SearchPage} />
 
               <Route exact path='/signin' component={SignIn} />
               <Route exact path='/signup' component={SignUp} />
