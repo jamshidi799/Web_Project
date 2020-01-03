@@ -60,12 +60,12 @@ class Navbar extends Component {
                 </div>
                 <div className='d-flex flex-row'>
                     <div>
-                        <SearchIcon/>
+                        <SearchIcon />
                     </div>
                     <InputBase
                         placeholder="Search…"
                         id="searchTextField"
-                        inputProps={{'aria-label': 'search'}}
+                        inputProps={{ 'aria-label': 'search' }}
                         color='primary'
                     />
                 </div>
@@ -77,7 +77,7 @@ class Navbar extends Component {
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
                         <Link to="/" className="nav-item nav-link">Home</Link>
-                        <Link to="/profile" className="nav-item nav-link">Profile</Link>
+                        <Link to={`/profile/${this.props.user.id}`} className="nav-item nav-link">Profile</Link>
                         <Example />
                     </div>
                 </div>

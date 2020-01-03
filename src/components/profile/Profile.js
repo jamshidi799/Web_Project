@@ -11,6 +11,9 @@ import { Link } from 'react-router-dom'
 import Posts from '../Post/Posts'
 
 class Profile extends Component {
+    state = {
+        user: '',
+    }
 
     getNumberOfPost = () => this.props.posts.filter(post => post.userid === this.props.user.id).length
 
@@ -19,7 +22,7 @@ class Profile extends Component {
     getFollowingCount = () => this.props.user.followings.length
 
     render() {
-        const user = this.props.user
+        const user = this.props.users.find(user => user.id === this.props.match.params.user_id)
         return (
             <div className="row">
                 <div className="col-8 container">
@@ -35,7 +38,7 @@ class Profile extends Component {
                                 <div className='row d-flex align-items-center'>
                                     <h3 className="m-3">{user.username}</h3>
                                     <div>
-                                        <Link to="/profile/edit"><img src={editIcon} /></Link>
+                                        <Link to="/edit_profile"><img src={editIcon} /></Link>
                                     </div>
                                 </div>
 
@@ -84,7 +87,8 @@ class Profile extends Component {
 const mapStateToProps = state => {
     return {
         posts: state.post.posts,
-        user: state.auth.user
+        user: state.auth.user,
+        users: state.auth.users,
     }
 }
 
