@@ -15,14 +15,18 @@ class Profile extends Component {
         user: '',
     }
 
-    getNumberOfPost = () => this.props.posts.filter(post => post.userid === this.props.user.id).length
+    updateState = (user) => {
+        this.setState({ user })
+    }
 
-    getFollowerCount = () => this.props.user.followers.length
+    getNumberOfPost = (user) => this.props.posts.filter(post => post.userid === user.id).length
 
-    getFollowingCount = () => this.props.user.followings.length
+    getFollowerCount = (user) => user.followers.length
+
+    getFollowingCount = (user) => user.followings.length
 
     render() {
-        const user = this.props.users.find(user => user.id === this.props.match.params.user_id)
+        const user = this.props.users.find(user => user.username === this.props.match.params.user_name)
         return (
             <div className="row">
                 <div className="col-8 container">
@@ -44,13 +48,13 @@ class Profile extends Component {
 
                                 <div className="row">
                                     <div className="col-3">
-                                        <h6>{`${this.getNumberOfPost()} post`}</h6>
+                                        <h6>{`${this.getNumberOfPost(user)} post`}</h6>
                                     </div>
                                     <div className="col-5">
-                                        <h6>{`${this.getFollowerCount()} Follower`}</h6>
+                                        <h6>{`${this.getFollowerCount(user)} Follower`}</h6>
                                     </div>
                                     <div className="col-4">
-                                        <h6>{`${this.getFollowingCount()} Following`}</h6>
+                                        <h6>{`${this.getFollowingCount(user)} Following`}</h6>
                                     </div>
                                 </div>
                                 <p className="text-muted">{user.bio}</p>

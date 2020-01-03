@@ -29,7 +29,7 @@ function App() {
           <div className="container-fluid">
             <Switch>
               <PrivateRoute exact path='/' component={Home} />
-              <PrivateRoute exact path='/profile/:user_id' component={Profile} />
+              <PrivateRoute exact path='/profile/:user_name' component={Profile} />
               <PrivateRoute exact path='/channel/:channelName' component={Channel} />
               <PrivateRoute exact path='/newChannel' component={NewChannel} />
               <PrivateRoute exact path='/newPost/:channel_id' component={NewPost} />
