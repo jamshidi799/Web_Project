@@ -34,7 +34,7 @@ class ProfileCard extends Component {
     render() {
         if (this.state.isClicked) {
             this.setState({ isClicked: false })
-            return <Redirect to={`/profile/${this.props.otherUser.id}`} />
+            return <Redirect to={`/profile/${this.props.otherUser.username}`} />
         }
         return (
             <div onClick={this.onCardClick} style={{ width: 23 + 'rem', cursor: 'pointer' }}>
