@@ -3,9 +3,9 @@ import { GET_COMMENTS, ADD_COMMENT, GET_COMMENT, EDIT_COMMENT, DELETE_COMMENT, L
 const initialState = {
     currentComment: null,
     comments: [
-        { id: '1', userid: '1', postid: '1', parentid: '2', content: 'comment 1', like: [], dislike: [] },
-        { id: '2', userid: '2', postid: '2', parentid: '', content: 'comment 2', like: [], dislike: [] },
-        { id: '3', userid: '3', postid: '3', parentid: '', content: 'comment 3', like: [], dislike: [] }
+        { id: '1', userid: '1', postid: '1', parentid: '2', content: 'making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia', like: [], dislike: [] },
+        { id: '2', userid: '2', postid: '2', parentid: '', content: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour', like: [], dislike: [] },
+        { id: '3', userid: '3', postid: '3', parentid: '', content: 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 ', like: [], dislike: [] }
     ]
 }
 

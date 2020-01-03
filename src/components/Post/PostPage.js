@@ -42,25 +42,25 @@ class PostPage extends Component {
                     <img className="card-img-top" src={img} alt="post" />
                     <div className="card-body">
                         <h3 className="card-title text-success">{title}</h3>
-                        <p className="card-text"> {content}</p>
+                        <p className="card-text font-weight-normal text-body"> {content}</p>
                         <div ><span className="text-success">132,231 views</span></div>
                     </div>
                     <div className="jumbotron">
                         <div className="row">
                             <h3 className="text-primary col-1">Comments:</h3>
                             <div className="col-9"></div>
-                            <button className="btn btn-primary m-r-0 col-2" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            <button className="btn btn-primary btn-sm m-r-0 " type="button" data-toggle="collapse" data-target="#collapseComment" aria-expanded="false" aria-controls="collapseExample">
                                 Add Comment
                             </button>
                         </div>
                         <br />
-                        <div className="collapse" id="collapseExample">
+                        <div className="collapse" id="collapseComment">
                             <form onSubmit={this.onCommentSubmit}>
                                 <div className="form-group">
-                                    <input type="text" className="form-control" name="comment" id="comment" value={this.state.comment} onChange={this.onCommentChange}
+                                    <input type="text" className="form-control" name="comment" value={this.state.comment} onChange={this.onCommentChange}
                                         placeholder="Enter comment" />
                                 </div>
-                                <button type="submit" className="btn btn-primary">Submit</button>
+                                <button type="submit" className="btn btn-primary btn-sm" >Submit</button>
                             </form>
                         </div>
                         <br />
