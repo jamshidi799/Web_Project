@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom'
 import Example from './Modal'
 import { logout } from '../../actions/auth'
 import TransitionsModal from "../notification/Modal";
-
+import SearchIcon from '@material-ui/icons/Search';
 import sidebarIcon from '../../img/sidebar.png'
+import InputBase from "@material-ui/core/InputBase";
 
 class Navbar extends Component {
     logout = () => {
@@ -37,6 +38,18 @@ class Navbar extends Component {
                 </li>
             </Fragment>
         )
+    };
+    componentDidMount() {
+        var searchTextField = document.getElementById("searchTextField");
+        searchTextField.addEventListener("keypress", event => {
+            var key = event.keyCode;
+            console.log(key)
+            if (key === 13) {
+                window.location.href = "/search/" + searchTextField.value;
+                //    this.props.history.push('/search'); dunno how the fuck to redirect this to search page
+                searchTextField.value = "";
+            }
+        });
     }
 
     render() {
@@ -44,6 +57,17 @@ class Navbar extends Component {
             <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
                 <div id="sidebarCollapse" className="btn navbar-brand">
                     <img src={sidebarIcon} width="30px" />
+                </div>
+                <div className='d-flex flex-row'>
+                    <div>
+                        <SearchIcon/>
+                    </div>
+                    <InputBase
+                        placeholder="Search…"
+                        id="searchTextField"
+                        inputProps={{'aria-label': 'search'}}
+                        color='primary'
+                    />
                 </div>
                 <button className="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
