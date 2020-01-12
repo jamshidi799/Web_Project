@@ -16,7 +16,7 @@ class PostPage extends Component {
     componentDidMount() {
         const postid = this.props.match.params.post_id
         this.props.getPost(postid)
-        this.props.getComments()
+        this.props.getComments(postid)
     }
 
     onCommentSubmit = e => {
@@ -76,10 +76,12 @@ class PostPage extends Component {
                             </form>
                         </div>
                         <br />
-                        {this.props.comments.map(comment => {
-                            if (comment.postid === id)
+                        {
+                            this.props.comments.map(comment => {
                                 return <Comment key={comment.id} comment={comment} />
-                        })}
+                            })
+                        }
+
                     </div>
 
                 </div>

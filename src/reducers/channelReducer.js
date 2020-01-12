@@ -1,4 +1,4 @@
-import { GET_CHANNELS, ADD_CHANNEL, GET_CHANNEL, EDIT_CHANNEL, DELETE_CHANNEL } from "../actions/types"
+import { ADD_CHANNEL, GET_CHANNEL, DELETE_CHANNEL } from "../actions/types"
 
 const initialState = {
     currentchannel: { id: '1', userid: '1', authors: [], name: 'channel_1', title: 'help me find peach', content: 'channels: state.channels.filter(channel => channel.id !== actions.payload)' },

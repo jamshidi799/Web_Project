@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import SideBar from './SideBar'
-import { Link } from 'react-router-dom'
+
+import { getPosts } from '../../actions/posts'
 import Posts from '../Post/Posts'
 
 class Home extends Component {
+    componentDidMount() {
+        this.props.getPosts()
+    }
+
     render() {
         return (
             <div className="container-fluid">
@@ -22,4 +26,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Home)
+export default connect(mapStateToProps, { getPosts })(Home)

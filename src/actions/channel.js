@@ -1,4 +1,4 @@
-import { GET_CHANNELS, GET_CHANNEL, DELETE_CHANNEL, EDIT_CHANNEL, ADD_CHANNEL } from './types'
+import { GET_CHANNELS, GET_CHANNEL, ADD_CHANNEL } from './types'
 
 // GET channelS
 export const getChannels = () => (dispatch) => {

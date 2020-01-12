@@ -11,13 +11,13 @@ const initialState = {
     token: localStorage.getItem("token"),
     isAuthenticated: true,
     isLoading: false,
-    user: { id: '1', username: 'ali', email: 'ali@gmail.com', password: '1234', bio: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ', image_url: '', followings: [], followers: [] },
+    user: { id: '1', username: 'Ali', email: 'ali@gmail.com', password: '1234', bio: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ', image_url: '', followings: [], followers: [] },
     users: [
-        { id: '1', username: 'ali', email: 'ali@gmail.com', password: '1234', bio: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ', image_url: '', followings: [], followers: [] },
+        { id: '1', username: 'Ali', email: 'ali@gmail.com', password: '1234', bio: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ', image_url: '', followings: [], followers: [] },
         { id: '2', username: 'ahmad', email: 'ahmad@gmail.com', password: '1234', bio: 'aaaa', image_url: '', followings: [], followers: [] },
         { id: '3', username: 'sadegh', email: 'sadegh@gmail.com', password: '1234', bio: 'aaaa', image_url: '', followings: [], followers: [] },
         { id: '4', username: 'reza', email: 'reza@gmail.com', password: '1234', bio: 'aaaa', image_url: '', followings: [], followers: [] },
-        { id: '5', username: 'mohammad', email: 'mohammad@gmail.com', password: '1234', bio: 'mmmmm', image_url: '', followings: [], followers: [] },
+        { id: '5', username: 'Mohammad', email: 'mohammad@gmail.com', password: '1234', bio: 'mmmmm', image_url: '', followings: [], followers: [] },
     ]
 };
 

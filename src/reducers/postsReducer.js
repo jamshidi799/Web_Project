@@ -1,4 +1,4 @@
-import { GET_POSTS, ADD_POST, GET_POST, EDIT_POST, DELETE_POST } from "../actions/types"
+import { GET_POSTS, ADD_POST, GET_POST, DELETE_POST } from "../actions/types"
 
 const initialState = {
     currentPost: { id: '1', userid: '1', channelid: '0', title: 'help me find peach', content: 'posts: state.posts.filter(post => post.id !== actions.payload)' },
@@ -21,12 +21,13 @@ export default function (state = initialState, actions) {
         case GET_POSTS:
             return {
                 ...state,
-                // posts: actions.payload      for server response only
+                posts: actions.payload
             }
         case GET_POST:
+            console.log('reducer', actions.payload)
             return {
                 ...state,
-                currentPost: state.posts.find(post => post.id === actions.payload)
+                currentPost: actions.payload
             }
         case DELETE_POST:
             return {

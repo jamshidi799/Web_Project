@@ -1,11 +1,16 @@
-import { GET_COMMENTS, DELETE_COMMENT, GET_COMMENT, EDIT_COMMENT, ADD_COMMENT, LIKE_COMMENT, DISLIKE_COMMENT } from './types'
+import axios from 'axios'
+
+import { GET_COMMENTS, GET_COMMENT, ADD_COMMENT, LIKE_COMMENT, DISLIKE_COMMENT } from './types'
 
 // GET COMMENTS
-export const getComments = () => (dispatch) => {
-    // console.log('action before')
-    return dispatch({
-        type: GET_COMMENTS,
-    })
+export const getComments = (postid) => (dispatch) => {
+    axios.get(`http://localhost:8000/api/posts/${postid}/comments`)
+        .then(res => {
+            return dispatch({
+                type: GET_COMMENTS,
+                payload: res.data
+            })
+        })
 }
 
 export const getComment = (commentId) => (dispatch) => {

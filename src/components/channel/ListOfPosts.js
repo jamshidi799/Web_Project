@@ -47,7 +47,6 @@ class ListOfPosts extends Component {
                                         </div>
                                         <hr />
                                     </div>
-
                                 )
                         })}
                     </GridListTile>
