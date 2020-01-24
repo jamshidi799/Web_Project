@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const SideBar = () => {
     return (
         <Fragment>
-            <nav id="sidebar">
+            <nav id="sidebar" className="active">
                 <ul className="list-unstyled components m-3">
                     <li className="active">
                         <Link to="/" aria-expanded="false" >Home</Link>

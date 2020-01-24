@@ -8,14 +8,11 @@ import {
     LOGIN_FAIL,
     REGISTER_FAIL,
     GET_USERS,
+    GET_USER,
     FOLLOW,
     UNFOLLOW,
 } from "./types";
-
-// CHECK TOKEN & LOAD USER
-export const loadUser = () => (dispatch, getState) => {
-
-};
+import Axios from "axios";
 
 // LOGIN USER
 export const login = ({ username, password }) => (dispatch, getState) => {
@@ -69,9 +66,26 @@ export const logout = () => (dispatch) => {
 
 // GET USERS
 export const getUsers = () => (dispatch) => {
-    return dispatch({
-        type: GET_USERS
-    })
+    Axios.get('http://localhost:8000/api/user/')
+        .then(res => {
+            return dispatch({
+                type: GET_USERS,
+                payload: res.data
+            })
+        })
+
+};
+
+// GET USER
+export const getUser = (username) => (dispatch) => {
+    Axios.get(`http://localhost:8000/api/user/${username}`)
+        .then(res => {
+            return dispatch({
+                type: GET_USER,
+                payload: res.data
+            })
+        })
+
 };
 
 // FOLLOW

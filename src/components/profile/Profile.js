@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { getPosts } from '../../actions/posts'
 import PostCard from '../Post/PostCard'
 import FollowList from './FollowList'
-import { follow, unfollow } from '../../actions/auth'
+import { follow, unfollow, getUsers, getUser } from '../../actions/auth'
 
 import img from '../../img/kim.jpg'
 import editIcon from '../../img/edit.png'
@@ -14,6 +14,11 @@ import Posts from '../Post/Posts'
 class Profile extends Component {
     state = {
         user: '',
+    }
+
+    componentDidMount() {
+        // this.props.getUsers()
+        this.props.getUser()
     }
 
     updateState = (user) => {
@@ -56,6 +61,8 @@ class Profile extends Component {
     getFollowerCount = (user) => user.followers.length
 
     getFollowingCount = (user) => user.followings.length
+
+    getShortBio = (bio) => bio.length < 50 ? bio : bio.substring(0, 50) + "..."
 
     render() {
         const user = this.props.users.find(user => user.username === this.props.match.params.user_name)
@@ -126,4 +133,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { getPosts, follow, unfollow })(Profile)
+export default connect(mapStateToProps, { getPosts, getUsers, getUser, follow, unfollow })(Profile)
