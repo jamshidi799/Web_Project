@@ -17,8 +17,8 @@ class Profile extends Component {
     }
 
     componentDidMount() {
-        // this.props.getUsers()
-        this.props.getUser()
+        this.props.getUsers()
+        this.props.getUser(this.props.user.username)
     }
 
     updateState = (user) => {
@@ -56,7 +56,7 @@ class Profile extends Component {
         this.props.unfollow(user.id)
     }
 
-    getNumberOfPost = (user) => this.props.posts.filter(post => post.userid === user.id).length
+    getNumberOfPost = (user) => this.props.posts.filter(post => post.owner === user.id).length
 
     getFollowerCount = (user) => user.followers.length
 
@@ -111,7 +111,7 @@ class Profile extends Component {
                     </div>
                     <div className="container">
                         <div className="row text-center text-lg-left">
-                            <Posts posts={this.props.posts.filter(post => post.userid === user.id)} />
+                            <Posts posts={this.props.posts.filter(post => post.owner === user.id)} />
                         </div>
                     </div>
 

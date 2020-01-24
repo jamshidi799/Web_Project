@@ -38,8 +38,9 @@ export const deletePost = (id) => (dispatch) => {
 
 // ADD POST
 export const addPost = post => (dispatch) => {
-    axios.post('http://localhost:8000/api/post/', post)
+    axios.post('http://localhost:8000/api/posts/', post)
         .then(res => {
+            console.log(post)
             dispatch({
                 type: ADD_POST,
                 payload: res.data

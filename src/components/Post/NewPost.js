@@ -18,7 +18,7 @@ class NewPost extends Component {
         e.preventDefault()
         const { title, content } = this.state
         const channelid = this.props.match.params.chennel_id
-        const post = { channelid, title, content, image_url: "_" }
+        const post = { channelid, title, content, image_url: "_", owner: this.props.user.id }
         this.setState({ ...this.state, isPostCreated: true })
         console.log(post)
         this.props.addPost(post)

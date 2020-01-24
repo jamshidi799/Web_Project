@@ -51,10 +51,14 @@ export const register = (newUser) => (dispatch, getState) => {
 
 // EDIT PROFILE
 export const edit = (editedUser) => (dispatch, getState) => {
-    return dispatch({
-        type: EDIT,
-        payload: { ...editedUser }
-    })
+    Axios.put(`http://localhost:8000/api/user/${getState().auth.user.username}`, editedUser)
+        .then(res => {
+            return dispatch({
+                type: EDIT,
+                payload: res.data
+            })
+        })
+
 };
 
 // LOGOUT USER

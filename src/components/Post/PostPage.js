@@ -24,7 +24,7 @@ class PostPage extends Component {
         const content = this.state.comment
         const comment = {
             postid: this.props.currentPost.id,
-            userid: this.props.currentPost.userid, parentid: '', like: [], dislike: [], content
+            owner: this.props.currentPost.userid, parentid: '', like: [], dislike: [], content
         }
         this.props.addComment(comment)
     }
