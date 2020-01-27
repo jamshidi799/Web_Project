@@ -28,7 +28,9 @@ export const GET_USERS = "GET_USERS";
 export const GET_USER = "GET_USER";
 export const FOLLOW = "FOLLOW";
 export const UNFOLLOW = "UNFOLLOW";
-
+export const AUTH_ERROR = "AUTH_ERROR";
+export const USER_LOADING = "USER_LOADING";
+export const USER_LOADED = "USER_LOADED";
 
 
 export const GET_ERRORS = "GET_ERRORS";

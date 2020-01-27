@@ -11,30 +11,33 @@ import {
     GET_USER,
     FOLLOW,
     UNFOLLOW,
+    USER_LOADED,
+    USER_LOADING,
+    AUTH_ERROR,
 } from "./types";
 import axios from "axios";
 
 
 // CHECK TOKEN & LOAD USER
-// export const loadUser = () => (dispatch, getState) => {
-//     // User Loading
-//     dispatch({ type: USER_LOADING });
+export const loadUser = () => (dispatch, getState) => {
+    // User Loading
+    dispatch({ type: USER_LOADING });
 
-//     axios
-//         .get("/api/auth/user", tokenConfig(getState))
-//         .then(res => {
-//             dispatch({
-//                 type: USER_LOADED,
-//                 payload: res.data
-//             });
-//         })
-//         .catch(err => {
-//             dispatch(returnErrors(err.response.data, err.response.status));
-//             dispatch({
-//                 type: AUTH_ERROR
-//             });
-//         });
-// };
+    axios
+        .get("http://localhost:8000/api/auth/user", tokenConfig(getState))
+        .then(res => {
+            dispatch({
+                type: USER_LOADED,
+                payload: res.data
+            });
+        })
+        .catch(err => {
+            dispatch(returnErrors(err.response.data, err.response.status));
+            dispatch({
+                type: AUTH_ERROR
+            });
+        });
+};
 
 
 // LOGIN USER
@@ -92,6 +95,41 @@ export const register = ({ username, email, password }) => dispatch => {
         });
 };
 
+// LOGOUT USER
+export const logout = () => (dispatch, getState) => {
+    axios
+        .post("http://localhost:8000/api/auth/logout/", null, tokenConfig(getState))
+        .then(res => {
+            dispatch({ type: 'CLEAR_LEADS' });
+            dispatch({
+                type: LOGOUT_SUCCESS
+            });
+        })
+        .catch(err => {
+            dispatch(returnErrors(err.response.data, err.response.status));
+        });
+};
+
+// Setup config with token - helper function
+export const tokenConfig = getState => {
+    // Get token from state
+    const token = getState().auth.token;
+
+    // Headers
+    const config = {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    };
+
+    // If token, add to headers config
+    if (token) {
+        config.headers["Authorization"] = `Token ${token}`;
+    }
+
+    return config;
+};
+
 // EDIT PROFILE
 export const edit = (editedUser) => (dispatch, getState) => {
     axios.put(`http://localhost:8000/api/user/${getState().auth.user.username}`, editedUser)
@@ -102,13 +140,6 @@ export const edit = (editedUser) => (dispatch, getState) => {
             })
         })
 
-};
-
-// LOGOUT USER
-export const logout = () => (dispatch) => {
-    return dispatch({
-        type: LOGOUT_SUCCESS,
-    })
 };
 
 // GET USERS

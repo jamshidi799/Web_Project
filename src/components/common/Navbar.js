@@ -77,7 +77,10 @@ class Navbar extends Component {
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
                         <Link to="/" className="nav-item nav-link">Home</Link>
-                        <Link to={`/profile/${this.props.user.username}`} className="nav-item nav-link">Profile</Link>
+                        {() => {
+                            if (this.props.isAuthenticated) return <Link to={`/profile/${this.props.user.username}`} className="nav-item nav-link">Profile</Link>
+                        }
+                        }
                         <Example />
                     </div>
                 </div>

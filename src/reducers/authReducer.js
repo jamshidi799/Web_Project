@@ -1,17 +1,20 @@
 import {
     REGISTER_SUCCESS,
+    REGISTER_FAIL,
     LOGIN_SUCCESS,
+    LOGIN_FAIL,
     LOGOUT_SUCCESS,
+    AUTH_ERROR,
     EDIT,
     FOLLOW,
     UNFOLLOW,
-    GET_USERS,
-    GET_USER,
+    USER_LOADED,
+    USER_LOADING,
 } from "../actions/types";
 
 const initialState = {
     token: localStorage.getItem("token"),
-    isAuthenticated: true,
+    isAuthenticated: false,
     isLoading: false,
     user: { id: 1, username: 'ali', email: 'ali@gmail.com', password: '1234', bio: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ', image_url: '', followings: [], followers: [] },
     users: [
@@ -23,43 +26,50 @@ const initialState = {
     ]
 };
 
-function flatUser(item) {
-    return {
-        ...item.user,
-        bio: item.bio,
-        followings: [],
-        followers: [],
-    }
-}
+// function flatUser(item) {
+//     return {
+//         ...item.user,
+//         bio: item.bio,
+//         followings: [],
+//         followers: [],
+//     }
+// }
 
 export default function (state = initialState, action) {
     switch (action.type) {
-        case GET_USERS:
+        case USER_LOADING:
             return {
                 ...state,
-                users: action.payload.map(item => flatUser(item))
-            }
-        case GET_USER:
-            return {
-                ...state,
-                user: flatUser(action.payload)
-            }
-        case REGISTER_SUCCESS:
-            return {
-                ...state,
-                users: [...state.users, action.payload]
-            }
-        case LOGIN_SUCCESS:
+                isLoading: true
+            };
+        case USER_LOADED:
             return {
                 ...state,
                 isAuthenticated: true,
-                user: action.payload,
-            }
-        case LOGOUT_SUCCESS:
+                isLoading: false,
+                user: action.payload
+            };
+        case LOGIN_SUCCESS:
+        case REGISTER_SUCCESS:
+            localStorage.setItem("token", action.payload.token);
             return {
                 ...state,
+                ...action.payload,
+                isAuthenticated: true,
+                isLoading: false
+            };
+        case AUTH_ERROR:
+        case LOGIN_FAIL:
+        case LOGOUT_SUCCESS:
+        case REGISTER_FAIL:
+            localStorage.removeItem("token");
+            return {
+                ...state,
+                token: null,
+                user: null,
                 isAuthenticated: false,
-            }
+                isLoading: false
+            };
         case EDIT:
             const newList = state.users.map(user => {
                 if (user.id === action.payload.id)
