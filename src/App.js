@@ -17,6 +17,10 @@ import Navbar from "./components/common/Navbar";
 import PrivateRoute from "./components/common/PrivateRoute";
 import EditProfile from './components/profile/EditProfile';
 import SideBar from './components/common/SideBar';
+import Trend from './components/common/Trend';
+import Followed from './components/common/Followed';
+import Subscription from './components/common/Subscription';
+import Latest from './components/common/Latest';
 
 function App() {
   return (
@@ -29,6 +33,11 @@ function App() {
           <div className="container-fluid">
             <Switch>
               <PrivateRoute exact path='/' component={Home} />
+              <PrivateRoute exact path='/trending' component={Trend}/>
+              <PrivateRoute exact path='/followed' component={Followed}/>
+              <PrivateRoute exact path='/latest' component={Latest}/>
+              <PrivateRoute exact path='/subscriptions' component={Subscription}/>
+
               <PrivateRoute exact path='/profile/:user_name' component={Profile} />
               <PrivateRoute exact path='/channel/:channelName' component={Channel} />
               <PrivateRoute exact path='/newChannel' component={NewChannel} />
