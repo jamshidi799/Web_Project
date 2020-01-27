@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Posts from "../Post/Posts";
 
 class Trend extends Component {
     render() {

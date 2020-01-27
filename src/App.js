@@ -3,7 +3,6 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './store'
 
-
 import Home from "./components/common/Home";
 import SearchPage from "./components/search/SearchPage";
 import Profile from "./components/profile/Profile";
@@ -17,10 +16,10 @@ import Navbar from "./components/common/Navbar";
 import PrivateRoute from "./components/common/PrivateRoute";
 import EditProfile from './components/profile/EditProfile';
 import SideBar from './components/common/SideBar';
-import Trend from './components/common/Trend';
-import Followed from './components/common/Followed';
-import Subscription from './components/common/Subscription';
-import Latest from './components/common/Latest';
+import Trend from './components/common/assortment/Trend';
+import Followed from './components/common/assortment/Followed';
+import Subscription from './components/common/assortment/Subscription';
+import Latest from './components/common/assortment/Latest';
 
 function App() {
   return (
