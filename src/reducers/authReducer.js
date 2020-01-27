@@ -1,7 +1,7 @@
 import {
-    REGISTER,
-    LOGIN,
-    LOGOUT,
+    REGISTER_SUCCESS,
+    LOGIN_SUCCESS,
+    LOGOUT_SUCCESS,
     EDIT,
     FOLLOW,
     UNFOLLOW,
@@ -44,18 +44,18 @@ export default function (state = initialState, action) {
                 ...state,
                 user: flatUser(action.payload)
             }
-        case REGISTER:
+        case REGISTER_SUCCESS:
             return {
                 ...state,
                 users: [...state.users, action.payload]
             }
-        case LOGIN:
+        case LOGIN_SUCCESS:
             return {
                 ...state,
                 isAuthenticated: true,
                 user: action.payload,
             }
-        case LOGOUT:
+        case LOGOUT_SUCCESS:
             return {
                 ...state,
                 isAuthenticated: false,

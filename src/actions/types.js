@@ -18,11 +18,11 @@ export const EDIT_COMMENT = "EDIT_COMMENT"
 export const LIKE_COMMENT = "LIKE_COMMENT"
 export const DISLIKE_COMMENT = "DISLIKE_COMMENT"
 
-export const REGISTER = 'REGISTER'
-export const LOGIN = 'LOGIN'
-export const LOGOUT = 'LOGOUT'
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAIL = "REGISTER_FAIL";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 export const EDIT = "EDIT";
 export const GET_USERS = "GET_USERS";
 export const GET_USER = "GET_USER";
