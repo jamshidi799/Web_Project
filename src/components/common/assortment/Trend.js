@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import TrendPosts from '../../Post/postAssortment/TrendPosts';
 
 class Trend extends Component {
     render() {
@@ -6,7 +7,7 @@ class Trend extends Component {
         return (
             <div className="container-fluid">
                 <div className="row text-center text-lg-left">
-
+                    {/*<TrendPosts />*/}
                 </div>
             </div>
         )

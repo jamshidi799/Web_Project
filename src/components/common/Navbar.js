@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from 'react'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import React, {Component, Fragment} from 'react'
+import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import Example from './Modal'
-import { logout } from '../../actions/auth'
+import {logout} from '../../actions/auth'
 import TransitionsModal from "../notification/Modal";
 import SearchIcon from '@material-ui/icons/Search';
 import sidebarIcon from '../../img/sidebar.png'
@@ -24,7 +24,7 @@ class Navbar extends Component {
                         <button className="nav-item nav-link btn" onClick={this.logout}>Logout</button>
                     </li>
                     <li>
-                        <TransitionsModal content="notification" buttonName="notification" variant="contained" />
+                        <TransitionsModal content="notification" buttonName="notification" variant="contained"/>
                     </li>
                 </Fragment>
             )
@@ -39,6 +39,7 @@ class Navbar extends Component {
             </Fragment>
         )
     };
+
     componentDidMount() {
         var searchTextField = document.getElementById("searchTextField");
         searchTextField.addEventListener("keypress", event => {
@@ -56,29 +57,31 @@ class Navbar extends Component {
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
                 <div id="sidebarCollapse" className="btn navbar-brand">
-                    <img src={sidebarIcon} width="30px" />
+                    <img src={sidebarIcon} width="30px"/>
                 </div>
                 <div className='d-flex flex-row'>
                     <div>
-                        <SearchIcon />
+                        <SearchIcon/>
                     </div>
-                    <InputBase
-                        placeholder="Search…"
-                        id="searchTextField"
-                        inputProps={{ 'aria-label': 'search' }}
-                        color='primary'
-                    />
+                    <div>
+                        <InputBase
+                            placeholder="Search…"
+                            id="searchTextField"
+                            inputProps={{'aria-label': 'search'}}
+                            color='primary'
+                        />
+                    </div>
                 </div>
                 <button className="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                        data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
                         <Link to="/" className="nav-item nav-link">Home</Link>
                         <Link to={`/profile/${this.props.user.username}`} className="nav-item nav-link">Profile</Link>
-                        <Example />
+                        <Example/>
                     </div>
                 </div>
                 <div className="navbar-collapse collapse">
@@ -98,4 +101,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { logout })(Navbar)
+export default connect(mapStateToProps, {logout})(Navbar)

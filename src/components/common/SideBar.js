@@ -5,7 +5,7 @@ const SideBar = () => {
     return (
         <Fragment>
             <nav id="sidebar">
-                <ul className="list-unstyled components m-3">
+                <ul className="list-unstyled components m-3" >
                     <li id="home" className="active">
                         <Link onClick={onHome} to="/" aria-expanded="false" >Home</Link>
                     </li>
@@ -16,7 +16,7 @@ const SideBar = () => {
                         <Link onClick={onFollowed} to="/followed" >Followed</Link>
                     </li>
                     <li id="sub">
-                        <Link onClick={onSub} to="/subscriptions">Subscriptions</Link>
+                        <Link onClick={onSub} to="/subscriptions">Subscription</Link>
                     </li>
                     <li id="latest">
                         <Link onClick={onLatest} to="/latest">Latest</Link>
