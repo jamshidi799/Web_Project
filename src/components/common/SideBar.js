@@ -1,11 +1,11 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 
 const SideBar = () => {
     return (
         <Fragment>
-            <nav id="sidebar">
-                <ul className="list-unstyled components m-3" >
+            <nav id="sidebar" className="active">
+                <ul className="list-unstyled components m-3">
                     <li id="home" className="active">
                         <Link onClick={onHome} to="/" aria-expanded="false" >Home</Link>
                     </li>

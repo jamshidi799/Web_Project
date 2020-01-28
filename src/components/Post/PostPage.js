@@ -16,7 +16,7 @@ class PostPage extends Component {
     componentDidMount() {
         const postid = this.props.match.params.post_id
         this.props.getPost(postid)
-        this.props.getComments()
+        this.props.getComments(postid)
     }
 
     onCommentSubmit = e => {
@@ -24,7 +24,7 @@ class PostPage extends Component {
         const content = this.state.comment
         const comment = {
             postid: this.props.currentPost.id,
-            userid: this.props.currentPost.userid, parentid: '', like: [], dislike: [], content
+            owner: this.props.currentPost.userid, parentid: '', like: [], dislike: [], content
         }
         this.props.addComment(comment)
     }
@@ -33,12 +33,24 @@ class PostPage extends Component {
         this.setState({ [e.target.name]: e.target.value })
     }
 
+    getButtons = () => {
+        if (this.props.currentPost.userid === this.props.user.id)
+            return (
+                <div className="mb-3">
+                    <button className="btn btn-sm btn-dark">edit</button>
+                    <span>  </span>
+                    <button className="btn btn-sm btn-dark">delete</button>
+                </div>
+            )
+    }
+
 
     render() {
         const { id, title, content } = this.props.currentPost
         return (
             <div className="container">
                 <div className="jumbotron">
+                    {this.getButtons()}
                     <img className="card-img-top" src={img} alt="post" />
                     <div className="card-body">
                         <h3 className="card-title text-success">{title}</h3>
@@ -64,10 +76,12 @@ class PostPage extends Component {
                             </form>
                         </div>
                         <br />
-                        {this.props.comments.map(comment => {
-                            if (comment.postid === id)
+                        {
+                            this.props.comments.map(comment => {
                                 return <Comment key={comment.id} comment={comment} />
-                        })}
+                            })
+                        }
+
                     </div>
 
                 </div>
@@ -82,7 +96,8 @@ const mapStateToProps = state => {
     // console.log("mapStateTo", state)
     return {
         comments: state.comment.comments,
-        currentPost: state.post.currentPost
+        currentPost: state.post.currentPost,
+        user: state.auth.user
     }
 }
 

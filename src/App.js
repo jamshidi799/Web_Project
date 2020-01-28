@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './store'
@@ -21,10 +21,18 @@ import Followed from './components/common/assortment/Followed';
 import Subscription from './components/common/assortment/Subscription';
 import Latest from './components/common/assortment/Latest';
 
-function App() {
-  return (
-    <Provider store={store}>
-      <BrowserRouter>
+import { loadUser } from "./actions/auth";
+
+class App extends Component {
+
+  componentDidMount() {
+    store.dispatch(loadUser());
+  }
+
+  render() {
+    return (
+      <Provider store={store}>
+        <BrowserRouter>
 
         <Navbar />
         <div className="wrapper">
@@ -45,16 +53,18 @@ function App() {
               <PrivateRoute exact path='/edit_profile' component={EditProfile} />
               <PrivateRoute exact path='/search/:search' component={SearchPage} />
 
-              <Route exact path='/signin' component={SignIn} />
-              <Route exact path='/signup' component={SignUp} />
+                <Route exact path='/signin' component={SignIn} />
+                <Route exact path='/signup' component={SignUp} />
 
-            </Switch>
+              </Switch>
+            </div>
           </div>
-        </div>
 
-      </BrowserRouter>
-    </Provider>
-  );
+        </BrowserRouter>
+      </Provider>
+    );
+  }
+
 }
 
 export default App;

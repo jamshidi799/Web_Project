@@ -18,7 +18,7 @@ class NewPost extends Component {
         e.preventDefault()
         const { title, content } = this.state
         const channelid = this.props.match.params.chennel_id
-        const post = { channelid, title, content, image_url: "_" }
+        const post = { channelid, title, content, image_url: "_", owner: this.props.user.id }
         this.setState({ ...this.state, isPostCreated: true })
         console.log(post)
         this.props.addPost(post)
@@ -28,7 +28,7 @@ class NewPost extends Component {
     render() {
         const { title, content } = this.state
         if (this.state.isPostCreated)
-            return <Redirect to="/profile" />;
+            return <Redirect to={`/profile/${this.props.user.username}`} />;
         return (
             <div className="container col-md-6 mb-4">
                 <form className="jumbotron" onSubmit={this.onSubmit}>
@@ -53,4 +53,11 @@ class NewPost extends Component {
     }
 }
 
-export default connect(null, { addPost })(NewPost)
+const mapStateToProps = state => {
+    return {
+        user: state.auth.user,
+    }
+}
+
+
+export default connect(mapStateToProps, { addPost })(NewPost)

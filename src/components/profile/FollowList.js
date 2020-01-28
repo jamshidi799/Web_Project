@@ -39,7 +39,6 @@ class FollowList extends Component {
                     <ListSubheader component="div"><h3>Profiles</h3></ListSubheader>
                     <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
                     </GridListTile>
-                    <hr />
                     {this.props.users.map(user => <ProfileCard otherUser={user} key={user.id} />)}
                 </GridList>
             </div>

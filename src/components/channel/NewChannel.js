@@ -5,6 +5,7 @@ import { addChannel } from '../../actions/channel'
 
 class NewChannel extends Component {
     state = {
+        name: "",
         title: "",
         content: "",
         isChannelCreated: false
@@ -26,7 +27,7 @@ class NewChannel extends Component {
     render() {
         const { name, title, content } = this.state
         if (this.state.isChannelCreated)
-            return <Redirect to="/profile" />;
+            return <Redirect to={`/profile/${this.props.user.username}`} />;
         return (
             <div className="container col-md-6 mb-4">
                 <form className="jumbotron" onSubmit={this.onSubmit}>

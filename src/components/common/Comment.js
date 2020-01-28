@@ -39,8 +39,8 @@ class Comment extends Component {
             <div>
                 <p className="font-weight-normal text-body">{content}</p>
                 <div>
-                    <img src={likeIcon} alt="like" onClick={this.onLikeClicked} /> <span>{like.length}   </span>
-                    <img src={unlikeIcon} alt="unlike" onClick={this.onUnlikeClicked} /> <span>{dislike.length}   </span>
+                    <img src={likeIcon} alt="like" onClick={this.onLikeClicked} /> <span>{100}   </span>
+                    <img src={unlikeIcon} alt="unlike" onClick={this.onUnlikeClicked} /> <span>{100}   </span>
                     <button className="btn btn-dark btn-sm" type="button" data-toggle="collapse" data-target={`#collapseReply${this.props.comment.id}`} aria-expanded="false" aria-controls="collapseExample">
                         reply
                     </button>

@@ -15,9 +15,7 @@ class SignIn extends Component {
 
     onSubmit = e => {
         e.preventDefault()
-        const { username, password } = this.state
-        const user = { username, password }
-        this.props.login(user)
+        this.props.login(this.state.username, this.state.password)
     }
 
 
