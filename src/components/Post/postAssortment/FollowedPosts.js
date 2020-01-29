@@ -1,11 +1,11 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux'
 import PostCard from '../PostCard'
-import {getPosts, getTrends} from '../../../actions/posts'
+import {getFollowed, getPosts, getTrends} from '../../../actions/posts'
 
-class TrendPosts extends Component {
+class FollowedPosts extends Component {
     componentDidMount() {
-        this.props.getTrends()
+        this.props.getFollowed()
         //this.props.getUsers()
     }
 
@@ -20,12 +20,12 @@ class TrendPosts extends Component {
                     // if (followings !== undefined)
                     //     for (let i = 0; i < followings.length; i++)
                     //         if (post.userid === followings[i].id)
-                                return (
-                                    <div className="col-lg-3 col-md-4 col-6" style={{maxWidth: 500 + "px"}}
-                                         key={post.id}>
-                                        <PostCard post={post}/>
-                                    </div>
-                                )
+                    return (
+                        <div className="col-lg-3 col-md-4 col-6" style={{maxWidth: 500 + "px"}}
+                             key={post.id}>
+                            <PostCard post={post}/>
+                        </div>
+                    )
                 })}
             </Fragment>
 
@@ -40,4 +40,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {getTrends})(TrendPosts)
+export default connect(mapStateToProps, {getFollowed})(FollowedPosts)

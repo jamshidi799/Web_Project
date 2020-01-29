@@ -144,14 +144,13 @@ export const edit = (editedUser) => (dispatch, getState) => {
 
 // GET USERS
 export const getUsers = () => (dispatch) => {
-    axios.get('http://localhost:8000/api/user/')
+    axios.get('http://localhost:8000/api/auth/')
         .then(res => {
             return dispatch({
                 type: GET_USERS,
                 payload: res.data
             })
         })
-
 };
 
 // GET USER

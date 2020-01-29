@@ -36,3 +36,11 @@ export const USER_LOADED = "USER_LOADED";
 export const GET_ERRORS = "GET_ERRORS";
 export const CREATE_MESSAGE = "CREATE_MESSAGE";
 
+export const GET_TRENDS = "GET_TRENDS";
+export const GET_SUBS = "GET_SUBS";
+export const GET_FOLLOWED = "GET_FOLLOWED";
+export const GET_LATEST = "GET_LATEST";
+
+
+
+
