@@ -6,26 +6,57 @@ const SideBar = () => {
         <Fragment>
             <nav id="sidebar" className="active">
                 <ul className="list-unstyled components m-3">
-                    <li className="active">
-                        <Link to="/" aria-expanded="false" >Home</Link>
+                    <li id="home" className="active">
+                        <Link onClick={onHome} to="/" aria-expanded="false" >Home</Link>
                     </li>
-                    <li>
-                        <Link to="/">Trending</Link>
+                    <li id="trend">
+                        <Link onClick={onTrend} to="/trending">Trending</Link>
                     </li>
-                    <li>
-                        <Link to="/" >Liked Post</Link>
+                    <li id="followed">
+                        <Link onClick={onFollowed} to="/followed" >Followed</Link>
                     </li>
-                    <li>
-                        <Link to="/">Subscriptions</Link>
+                    <li id="sub">
+                        <Link onClick={onSub} to="/subscriptions">Subscription</Link>
                     </li>
-                    <li>
-                        <Link to="/">Latest</Link>
+                    <li id="latest">
+                        <Link onClick={onLatest} to="/latest">Latest</Link>
                     </li>
                 </ul>
             </nav>
         </Fragment>
 
     )
+
+    function onHome() {
+        const active = document.getElementsByClassName("active")[0];
+        active.classList.remove("active");
+        const clicked = document.getElementById("home");
+        clicked.classList.add("active");
+    }
+    function onTrend() {
+        const active = document.getElementsByClassName("active")[0];
+        active.classList.remove("active");
+        const clicked = document.getElementById("trend");
+        clicked.classList.add("active");
+    }
+    function onFollowed() {
+        const active = document.getElementsByClassName("active")[0];
+        active.classList.remove("active");
+        const clicked = document.getElementById("followed");
+        clicked.classList.add("active");
+    }
+    function onSub() {
+        const active = document.getElementsByClassName("active")[0];
+        active.classList.remove("active");
+        const clicked = document.getElementById("sub");
+        clicked.classList.add("active");
+    }
+    function onLatest() {
+        const active = document.getElementsByClassName("active")[0];
+        active.classList.remove("active");
+        const clicked = document.getElementById("latest");
+        clicked.classList.add("active");
+    }
 }
 
 export default SideBar

@@ -154,7 +154,6 @@ export const getUsersList = () => (dispatch) => {
                 payload: res.data
             })
         })
-
 };
 
 // GET PROFILE

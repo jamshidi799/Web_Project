@@ -1,4 +1,13 @@
-import { GET_POSTS, ADD_POST, GET_POST, DELETE_POST } from "../actions/types"
+import {
+    GET_POSTS,
+    ADD_POST,
+    GET_POST,
+    DELETE_POST,
+    GET_FOLLOWED,
+    GET_SUBS,
+    GET_TRENDS,
+    GET_LATEST
+} from "../actions/types"
 
 const initialState = {
     currentPost: {
@@ -59,6 +68,26 @@ export default function (state = initialState, actions) {
             return {
                 ...state,
                 posts: [...state.posts, actions.payload]
+            }
+        case GET_FOLLOWED:
+            return {
+                ...state,
+                posts: actions.payload
+            }
+        case GET_SUBS:
+            return {
+                ...state,
+                posts: actions.payload
+            }
+        case GET_TRENDS:
+            return {
+                ...state,
+                posts: actions.payload
+            }
+        case GET_LATEST:
+            return {
+                ...state,
+                posts: actions.payload
             }
         default:
             return state
