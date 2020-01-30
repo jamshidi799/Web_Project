@@ -58,9 +58,9 @@ class Profile extends Component {
 
     getNumberOfPost = (profile) => this.props.posts.filter(post => post.owner === profile.id).length
 
-    getFollowerCount = (profile) => profile.followers.length
+    getFollowerCount = (profile) => profile.creator.length
 
-    getFollowingCount = (profile) => profile.followings.length
+    getFollowingCount = (profile) => profile.following.length
 
     getShortBio = (bio) => bio.length < 50 ? bio : bio.substring(0, 50) + "..."
 
@@ -91,12 +91,12 @@ class Profile extends Component {
                                     <div className="col-3">
                                         <h6>{`${this.getNumberOfPost(profile)} post`}</h6>
                                     </div>
-                                    {/* <div className="col-5">
+                                    <div className="col-5">
                                         <h6>{`${this.getFollowerCount(profile)} Follower`}</h6>
                                     </div>
                                     <div className="col-4">
                                         <h6>{`${this.getFollowingCount(profile)} Following`}</h6>
-                                    </div> */}
+                                    </div>
                                 </div>
                                 <p className="text-muted">{profile.profile.bio}</p>
                             </div>

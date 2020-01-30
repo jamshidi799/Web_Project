@@ -24,7 +24,6 @@ export default function (state = initialState, actions) {
                 posts: actions.payload
             }
         case GET_POST:
-            console.log('reducer', actions.payload)
             return {
                 ...state,
                 currentPost: actions.payload

@@ -19,6 +19,7 @@ import EditProfile from './components/profile/EditProfile';
 import SideBar from './components/common/SideBar';
 
 import { loadUser, authenticate } from "./actions/auth";
+import { getChannels } from './actions/channel'
 
 class App extends Component {
 
@@ -26,6 +27,7 @@ class App extends Component {
     if (store.getState().auth.token) {
       store.dispatch(authenticate())
       store.dispatch(loadUser())
+      store.dispatch(getChannels())
     }
   }
 
@@ -41,7 +43,7 @@ class App extends Component {
               <Switch>
                 <PrivateRoute exact path='/' component={Home} />
                 <PrivateRoute exact path='/profile/:user_name' component={Profile} />
-                <PrivateRoute exact path='/channel/:channelName' component={Channel} />
+                <PrivateRoute exact path='/channel/:channel_id' component={Channel} />
                 <PrivateRoute exact path='/newChannel' component={NewChannel} />
                 <PrivateRoute exact path='/newPost/:channel_id' component={NewPost} />
                 <PrivateRoute exact path='/post/:post_id' component={PostPage} />

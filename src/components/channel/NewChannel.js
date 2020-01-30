@@ -6,8 +6,7 @@ import { addChannel } from '../../actions/channel'
 class NewChannel extends Component {
     state = {
         name: "",
-        title: "",
-        content: "",
+        about: "",
         isChannelCreated: false
     }
 
@@ -17,15 +16,15 @@ class NewChannel extends Component {
 
     onSubmit = e => {
         e.preventDefault()
-        const { name, title, content } = this.state
-        const channel = { userid: this.props.user.id, name, title, content, image_url: "_" }
+        const { name, about } = this.state
+        const channel = { owner: this.props.user.id, name, about, posts: [] }
         this.setState({ ...this.state, isChannelCreated: true })
         this.props.addChannel(channel)
     }
 
 
     render() {
-        const { name, title, content } = this.state
+        const { name, about } = this.state
         if (this.state.isChannelCreated)
             return <Redirect to={`/profile/${this.props.user.username}`} />;
         return (
@@ -38,12 +37,8 @@ class NewChannel extends Component {
                         <input type="text" name="name" className="form-control" onChange={this.onChange} value={name} required />
                     </div>
                     <div className="form-group">
-                        <label >Title</label>
-                        <input type="text" name="title" className="form-control" onChange={this.onChange} value={title} required />
-                    </div>
-                    <div className="form-group">
                         <label >Text</label>
-                        <textarea type="text" name="content" value={content} onChange={this.onChange} className="form-control" id="Text" rows="3" required />
+                        <textarea type="text" name="about" value={about} onChange={this.onChange} className="form-control" id="Text" rows="3" required />
                     </div>
                     <div className="form-group">
                         <label className="form-check-label" >image</label>

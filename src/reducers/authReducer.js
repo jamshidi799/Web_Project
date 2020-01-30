@@ -29,13 +29,28 @@ const initialState = {
         }
     },
     profile: {
-        "id": 2,
-        "username": "ali",
+        "id": 21,
+        "username": "lucky",
         "email": "",
         "profile": {
-            "bio": "or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter",
+            "bio": "hello",
             "image": null
-        }
+        },
+        "creator": [
+            {
+                "following": 2,
+                "creator": 21
+            },
+            {
+                "following": 20,
+                "creator": 21
+            },
+            {
+                "following": 25,
+                "creator": 21
+            }
+        ],
+        "following": []
     },
     users: [
         { id: 1, username: 'ali', email: 'ali@gmail.com', bio: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ', image_url: '', followings: [], followers: [] },

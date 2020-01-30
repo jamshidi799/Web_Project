@@ -5,21 +5,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ListOfPosts from "./ListOfPosts";
 import AboutChannel from "./AboutChannel";
 import ListOfAuthors from './ListOfAuthors';
+import { getChannel } from '../../actions/channel'
 
 class Channel extends Component {
-    state = {
-        channelName: null,
-        aboutChannel: "Channel for Animals",
-
-    };
 
     componentDidMount() {
-        this.setState(() => this.props.match.params);
+        this.props.getChannel(this.props.match.params.channel_id)
     }
 
     render() {
-        const channelId = this.props.match.params.channelName
-        const channel = this.props.channels.find(channel => channel.id === channelId)
+        if (this.props.channel.id != this.props.match.params.channel_id)
+            this.props.getChannel(this.props.match.params.channel_id)
+        const channel = this.props.channel
         return (
             <React.Fragment>
                 <div className="container-fluid">
@@ -42,8 +39,8 @@ class Channel extends Component {
 
 const mapStateToProps = state => {
     return {
-        channels: state.channel.channels,
+        channel: state.channel.currentchannel
     }
 }
 
-export default connect(mapStateToProps, {})(Channel)
+export default connect(mapStateToProps, { getChannel })(Channel)

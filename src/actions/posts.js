@@ -17,7 +17,6 @@ export const getPosts = () => (dispatch) => {
 export const getPost = (id) => (dispatch) => {
     axios.get(`http://localhost:8000/api/posts/${id}`)
         .then(res => {
-            console.log("get_query", res.data)
             return dispatch({
                 type: GET_POST,
                 payload: res.data
@@ -40,7 +39,6 @@ export const deletePost = (id) => (dispatch) => {
 export const addPost = post => (dispatch) => {
     axios.post('http://localhost:8000/api/posts/', post)
         .then(res => {
-            console.log(post)
             dispatch({
                 type: ADD_POST,
                 payload: res.data

@@ -27,7 +27,7 @@ class ListOfPosts extends Component {
     }));
 
     getDeletePostBtn = () => {
-        if (this.props.channel.userid === this.props.user.id)
+        if (this.props.channel.owner === this.props.user.id)
             return <button className="btn btn-sm btn-secondary">delete</button>
     }
 
@@ -37,17 +37,16 @@ class ListOfPosts extends Component {
             <React.Fragment>
                 <GridList cellHeight={180} className={classes.gridList}>
                     <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-                        {this.props.posts.map(post => {
-                            if (post.channelid === this.props.channel.id)
-                                return (
-                                    <div className="container-fluid m-3" key={post.id}>
-                                        <div className="card" style={{ width: "100%" }} >
-                                            <PostCard post={post} />
-                                            {this.getDeletePostBtn()}
-                                        </div>
-                                        <hr />
+                        {this.props.channel.posts.map(post => {
+                            return (
+                                <div className="container-fluid m-3" key={post.id}>
+                                    <div className="card" style={{ width: "100%" }} >
+                                        <PostCard post={post} />
+                                        {this.getDeletePostBtn()}
                                     </div>
-                                )
+                                    <hr />
+                                </div>
+                            )
                         })}
                     </GridListTile>
 

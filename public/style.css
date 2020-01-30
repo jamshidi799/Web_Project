@@ -173,6 +173,9 @@ a[data-toggle="collapse"] {
   max-height: 400px;
   overflow: auto;
   white-space: nowrap;
+  border-style: double;
+  border-width: 0px 0px 0px 2px;
+  border-color: lightslategray;
 }
 
 .follow-list::-webkit-scrollbar {
