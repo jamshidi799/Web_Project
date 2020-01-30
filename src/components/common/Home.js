@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { getPosts } from '../../actions/posts'
-import { getUsers } from '../../actions/auth'
+import { getUsersList } from '../../actions/auth'
 import Posts from '../Post/Posts'
 
 class Home extends Component {
     componentDidMount() {
-        this.props.getPosts()
-        this.props.getUsers()
+        // this.props.getPosts()
+        // this.props.getUsers()
     }
 
     render() {
@@ -28,4 +28,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { getPosts, getUsers })(Home)
+export default connect(mapStateToProps, { getPosts, getUsersList })(Home)

@@ -18,12 +18,15 @@ import PrivateRoute from "./components/common/PrivateRoute";
 import EditProfile from './components/profile/EditProfile';
 import SideBar from './components/common/SideBar';
 
-import { loadUser } from "./actions/auth";
+import { loadUser, authenticate } from "./actions/auth";
 
 class App extends Component {
 
   componentDidMount() {
-    store.dispatch(loadUser());
+    if (store.getState().auth.token) {
+      store.dispatch(authenticate())
+      store.dispatch(loadUser())
+    }
   }
 
   render() {

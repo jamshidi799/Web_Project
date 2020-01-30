@@ -10,30 +10,41 @@ import {
     UNFOLLOW,
     USER_LOADED,
     USER_LOADING,
+    GET_PROFILE,
+    AUTHENTICATED,
 } from "../actions/types";
 
 const initialState = {
     token: localStorage.getItem("token"),
     isAuthenticated: false,
     isLoading: false,
-    user: { id: 1, username: 'ali', email: 'ali@gmail.com', password: '1234', bio: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ', image_url: '', followings: [], followers: [] },
+    user: {
+        "id": 2,
+        "username": "ali",
+        "email": "",
+        "profile": {
+            "bio": "or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter",
+            "image": null
+        }
+    },
+    profile: {
+        "id": 2,
+        "username": "ali",
+        "email": "",
+        "profile": {
+            "bio": "or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter",
+            "image": null
+        }
+    },
     users: [
-        { id: 1, username: 'ali', email: 'ali@gmail.com', password: '1234', bio: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ', image_url: '', followings: [], followers: [] },
-        { id: 2, username: 'ahmad', email: 'ahmad@gmail.com', password: '1234', bio: 'aaaa', image_url: '', followings: [], followers: [] },
-        { id: 3, username: 'sadegh', email: 'sadegh@gmail.com', password: '1234', bio: 'aaaa', image_url: '', followings: [], followers: [] },
-        { id: 4, username: 'reza', email: 'reza@gmail.com', password: '1234', bio: 'aaaa', image_url: '', followings: [], followers: [] },
-        { id: 5, username: 'mohammad', email: 'mohammad@gmail.com', password: '1234', bio: 'mmmmm', image_url: '', followings: [], followers: [] },
+        { id: 1, username: 'ali', email: 'ali@gmail.com', bio: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ', image_url: '', followings: [], followers: [] },
+        { id: 2, username: 'ahmad', email: 'ahmad@gmail.com', bio: 'aaaa', image_url: '', followings: [], followers: [] },
+        { id: 3, username: 'sadegh', email: 'sadegh@gmail.com', bio: 'aaaa', image_url: '', followings: [], followers: [] },
+        { id: 4, username: 'reza', email: 'reza@gmail.com', bio: 'aaaa', image_url: '', followings: [], followers: [] },
+        { id: 5, username: 'mohammad', email: 'mohammad@gmail.com', bio: 'mmmmm', image_url: '', followings: [], followers: [] },
     ]
 };
 
-// function flatUser(item) {
-//     return {
-//         ...item.user,
-//         bio: item.bio,
-//         followings: [],
-//         followers: [],
-//     }
-// }
 
 export default function (state = initialState, action) {
     switch (action.type) {
@@ -80,6 +91,16 @@ export default function (state = initialState, action) {
                 ...state,
                 user: action.payload,
                 users: newList
+            }
+        case GET_PROFILE:
+            return {
+                ...state,
+                profile: action.payload
+            }
+        case AUTHENTICATED:
+            return {
+                ...state,
+                isAuthenticated: true
             }
         case FOLLOW:
             const addToFollowing = { ...state.user, followings: [...state.user.followings, action.payload] }

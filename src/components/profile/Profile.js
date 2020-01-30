@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { getPosts } from '../../actions/posts'
 import PostCard from '../Post/PostCard'
 import FollowList from './FollowList'
-import { follow, unfollow, getUsers, getUser } from '../../actions/auth'
+import { follow, unfollow, getUsersList, getProfile } from '../../actions/auth'
 
 import img from '../../img/kim.jpg'
 import editIcon from '../../img/edit.png'
@@ -13,29 +13,29 @@ import Posts from '../Post/Posts'
 
 class Profile extends Component {
     state = {
-        user: '',
+        profile: '',
     }
 
     componentDidMount() {
-        this.props.getUsers()
-        this.props.getUser(this.props.user.username)
+        this.props.getUsersList()
+        this.props.getProfile(this.props.profile.username)
     }
 
-    updateState = (user) => {
-        this.setState({ user })
+    updateState = (profile) => {
+        this.setState({ profile })
     }
 
-    getButton = (user) => {
-        if (user.id === this.props.user.id)
+    getButton = (profile) => {
+        if (profile.id === this.props.user.id)
             return <Link to="/edit_profile"><img src={editIcon} /></Link>
-        const isFollowing = this.props.user.followings.find(followingId => followingId === user.id)
-        if (isFollowing === undefined)
-            return <button className="btn btn-sm btn-info" onClick={() => this.onFollowClicked(user)}>follow</button>
-        return <button className="btn btn-sm btn-info" onClick={() => this.onUnFollowClicked(user)}>unfollow</button>
+        // const isFollowing = this.props.profile.followings.find(followingId => followingId === profile.id)
+        // if (isFollowing === undefined)
+        //     return <button className="btn btn-sm btn-info" onClick={() => this.onFollowClicked(profile)}>follow</button>
+        // return <button className="btn btn-sm btn-info" onClick={() => this.onUnFollowClicked(profile)}>unfollow</button>
     }
 
-    getNewPostBtn = (user) => {
-        if (user.id === this.props.user.id)
+    getNewPostBtn = (profile) => {
+        if (profile.id === this.props.user.id)
             return (
                 <Fragment>
                     <Link to="/newPost/0" className='m-3'>
@@ -48,24 +48,25 @@ class Profile extends Component {
             )
     }
 
-    onFollowClicked = (user) => {
-        this.props.follow(user.id)
+    onFollowClicked = (profile) => {
+        this.props.follow(profile.id)
     }
 
-    onUnFollowClicked = (user) => {
-        this.props.unfollow(user.id)
+    onUnFollowClicked = (profile) => {
+        this.props.unfollow(profile.id)
     }
 
-    getNumberOfPost = (user) => this.props.posts.filter(post => post.owner === user.id).length
+    getNumberOfPost = (profile) => this.props.posts.filter(post => post.owner === profile.id).length
 
-    getFollowerCount = (user) => user.followers.length
+    getFollowerCount = (profile) => profile.followers.length
 
-    getFollowingCount = (user) => user.followings.length
+    getFollowingCount = (profile) => profile.followings.length
 
     getShortBio = (bio) => bio.length < 50 ? bio : bio.substring(0, 50) + "..."
 
     render() {
-        const user = this.props.users.find(user => user.username === this.props.match.params.user_name)
+        const profile = this.props.profile
+        console.log(profile, "profile")
         return (
             <div className="row">
                 <div className="col-8 container">
@@ -79,31 +80,31 @@ class Profile extends Component {
                             </div>
                             <div className="col-6">
                                 <div className='row d-flex align-items-center'>
-                                    <h3 className="m-3">{user.username}</h3>
+                                    <h3 className="m-3">{profile.username}</h3>
                                     <div>
-                                        {this.getButton(user)}
+                                        {this.getButton(profile)}
                                     </div>
                                 </div>
 
                                 <div className="row">
                                     <div className="col-3">
-                                        <h6>{`${this.getNumberOfPost(user)} post`}</h6>
+                                        <h6>{`${this.getNumberOfPost(profile)} post`}</h6>
                                     </div>
-                                    <div className="col-5">
-                                        <h6>{`${this.getFollowerCount(user)} Follower`}</h6>
+                                    {/* <div className="col-5">
+                                        <h6>{`${this.getFollowerCount(profile)} Follower`}</h6>
                                     </div>
                                     <div className="col-4">
-                                        <h6>{`${this.getFollowingCount(user)} Following`}</h6>
-                                    </div>
+                                        <h6>{`${this.getFollowingCount(profile)} Following`}</h6>
+                                    </div> */}
                                 </div>
-                                <p className="text-muted">{user.bio}</p>
+                                <p className="text-muted">{profile.bio}</p>
                             </div>
                         </div>
                         <div className="row text-center">
                             <div className="container">
 
                                 {
-                                    this.getNewPostBtn(user)
+                                    this.getNewPostBtn(profile)
                                 }
 
                             </div>
@@ -111,7 +112,7 @@ class Profile extends Component {
                     </div>
                     <div className="container">
                         <div className="row text-center text-lg-left">
-                            <Posts posts={this.props.posts.filter(post => post.owner === user.id)} />
+                            <Posts posts={this.props.posts.filter(post => post.owner === profile.id)} />
                         </div>
                     </div>
 
@@ -129,8 +130,9 @@ const mapStateToProps = state => {
     return {
         posts: state.post.posts,
         user: state.auth.user,
-        users: state.auth.users,
+        profilesList: state.auth.users,
+        Profile: state.auth.Profile,
     }
 }
 
-export default connect(mapStateToProps, { getPosts, getUsers, getUser, follow, unfollow })(Profile)
+export default connect(mapStateToProps, { getPosts, getUsersList, getProfile, follow, unfollow })(Profile)

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
 import ProfileCard from "./ProfileCard";
-import { getUsers } from '../../actions/auth'
+import { getUsersList } from '../../actions/auth'
 
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
@@ -52,4 +52,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { getUsers })(FollowList)
+export default connect(mapStateToProps, { getUsersList })(FollowList)

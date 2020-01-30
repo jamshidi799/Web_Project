@@ -24,13 +24,15 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 export const EDIT = "EDIT";
-export const GET_USERS = "GET_USERS";
-export const GET_USER = "GET_USER";
+export const GET_USERS_LIST = "GET_USERS_LIST";
+export const GET_PROFILE = "GET_PROFILE";
 export const FOLLOW = "FOLLOW";
 export const UNFOLLOW = "UNFOLLOW";
 export const AUTH_ERROR = "AUTH_ERROR";
 export const USER_LOADING = "USER_LOADING";
 export const USER_LOADED = "USER_LOADED";
+export const AUTHENTICATED = "AUTHENTICATED";
+
 
 
 export const GET_ERRORS = "GET_ERRORS";

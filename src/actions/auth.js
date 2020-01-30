@@ -7,13 +7,14 @@ import {
     LOGIN_FAIL,
     REGISTER_FAIL,
     REGISTER_SUCCESS,
-    GET_USERS,
-    GET_USER,
+    GET_USERS_LIST,
+    GET_PROFILE,
     FOLLOW,
     UNFOLLOW,
     USER_LOADED,
     USER_LOADING,
     AUTH_ERROR,
+    AUTHENTICATED,
 } from "./types";
 import axios from "axios";
 
@@ -69,7 +70,7 @@ export const login = (username, password) => dispatch => {
 };
 
 // REGISTER USER
-export const register = ({ username, email, password }) => dispatch => {
+export const register = ({ username, email, password, profile }) => dispatch => {
     // Headers
     const config = {
         headers: {
@@ -77,7 +78,7 @@ export const register = ({ username, email, password }) => dispatch => {
         }
     };
 
-    const body = JSON.stringify({ username, email, password });
+    const body = JSON.stringify({ username, email, password, profile });
 
     axios
         .post("http://localhost:8000/api/auth/register", body, config)
@@ -130,6 +131,8 @@ export const tokenConfig = getState => {
     return config;
 };
 
+export const authenticate = () => dispatch => dispatch({ type: AUTHENTICATED })
+
 // EDIT PROFILE
 export const edit = (editedUser) => (dispatch, getState) => {
     axios.put(`http://localhost:8000/api/user/${getState().auth.user.username}`, editedUser)
@@ -142,24 +145,24 @@ export const edit = (editedUser) => (dispatch, getState) => {
 
 };
 
-// GET USERS
-export const getUsers = () => (dispatch) => {
-    axios.get('http://localhost:8000/api/user/')
+// GET USER NAMES LIST
+export const getUsersList = () => (dispatch) => {
+    axios.get('http://localhost:8000/api/user/profile')
         .then(res => {
             return dispatch({
-                type: GET_USERS,
+                type: GET_USERS_LIST,
                 payload: res.data
             })
         })
 
 };
 
-// GET USER
-export const getUser = (username) => (dispatch) => {
-    axios.get(`http://localhost:8000/api/user/${username}`)
+// GET PROFILE
+export const getProfile = (username) => (dispatch) => {
+    axios.get(`http://localhost:8000/api/user/profile/${username}`)
         .then(res => {
             return dispatch({
-                type: GET_USER,
+                type: GET_PROFILE,
                 payload: res.data
             })
         })
