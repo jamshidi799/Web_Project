@@ -124,32 +124,20 @@ export default function (state = initialState, action) {
                 isAuthenticated: true
             }
         case FOLLOW:
-            const addToFollowing = { ...state.user, followings: [...state.user.followings, action.payload] }
-            const newUsersList = state.users.map(user => {
-                if (user.id === addToFollowing.id)
-                    return addToFollowing
-                else if (user.id === action.payload)
-                    return { ...user, followers: [...user.followers, state.user.id] }
-                return user
-            })
             return {
                 ...state,
-                user: addToFollowing,
-                users: newUsersList
+                profile: {
+                    ...state.profile,
+                    following: [...state.profile.following, action.payload]
+                }
             }
         case UNFOLLOW:
-            const newUser = { ...state.user, followings: state.user.followings.filter(followingId => followingId !== action.payload) }
-            const newUserList = state.users.map(user => {
-                if (user.id === newUser.id)
-                    return newUser
-                if (user.id === action.payload)
-                    return { ...user, followers: user.followers.filter(followerId => followerId !== state.user) }
-                return user
-            })
             return {
                 ...state,
-                user: newUser,
-                users: newUserList
+                profile: {
+                    ...state.profile,
+                    following: state.profile.following.filter(connection => connection.creator !== action.payload.creator)
+                }
             }
         default:
             return state;

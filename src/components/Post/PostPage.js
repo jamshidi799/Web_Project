@@ -16,15 +16,14 @@ class PostPage extends Component {
     componentDidMount() {
         const postid = this.props.match.params.post_id
         this.props.getPost(postid)
-        this.props.getComments(postid)
     }
 
     onCommentSubmit = e => {
         e.preventDefault()
         const content = this.state.comment
         const comment = {
-            postid: this.props.currentPost.id,
-            owner: this.props.currentPost.userid, parentid: '', like: [], dislike: [], content
+            post: this.props.post.id,
+            owner: this.props.user.id, like: [], dislike: [], content
         }
         this.props.addComment(comment)
     }
@@ -34,7 +33,7 @@ class PostPage extends Component {
     }
 
     getButtons = () => {
-        if (this.props.currentPost.userid === this.props.user.id)
+        if (this.props.post.userid === this.props.user.id)
             return (
                 <div className="mb-3">
                     <button className="btn btn-sm btn-dark">edit</button>
@@ -46,7 +45,7 @@ class PostPage extends Component {
 
 
     render() {
-        const { id, title, content } = this.props.currentPost
+        const { id, title, content } = this.props.post
         return (
             <div className="container">
                 <div className="jumbotron">
@@ -77,7 +76,7 @@ class PostPage extends Component {
                         </div>
                         <br />
                         {
-                            this.props.comments.map(comment => {
+                            this.props.post.comments.map(comment => {
                                 return <Comment key={comment.id} comment={comment} />
                             })
                         }
@@ -93,12 +92,10 @@ class PostPage extends Component {
 }
 
 const mapStateToProps = state => {
-    // console.log("mapStateTo", state)
     return {
-        comments: state.comment.comments,
-        currentPost: state.post.currentPost,
+        post: state.post.currentPost,
         user: state.auth.user
     }
 }
 
-export default connect(mapStateToProps, { getComments, addComment, getPost })(PostPage)
+export default connect(mapStateToProps, { addComment, getPost })(PostPage)

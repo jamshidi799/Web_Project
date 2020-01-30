@@ -91,9 +91,7 @@ class Comment extends Component {
 }
 
 const mapStateToProps = state => {
-    // console.log("mapStateTo", state)
     return {
-        comments: state.comment.comments,
     }
 }
 

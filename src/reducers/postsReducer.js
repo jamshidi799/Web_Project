@@ -1,7 +1,29 @@
 import { GET_POSTS, ADD_POST, GET_POST, DELETE_POST } from "../actions/types"
 
 const initialState = {
-    currentPost: { id: 1, owner: 1, channelid: 0, title: 'help me find peach', content: 'posts: state.posts.filter(post => post.id !== actions.payload)' },
+    currentPost: {
+        "id": 2,
+        "owner": 2,
+        "channel": null,
+        "title": "post2",
+        "content": "django second post :)",
+        "image": null,
+        "comments": [
+            {
+                "id": 3,
+                "owner": 1,
+                "content": "added successfully. You may add another comment below",
+                "date": "2020-01-11T21:25:21.749648Z",
+                "reply_to": null
+            }
+        ],
+        "date": "2020-01-11T21:17:59.950942Z",
+        "like": [
+            3,
+            21,
+            24
+        ]
+    },
     posts: [
         {
             id: 1, owner: 1, channelid: 0, title: 'help me find peach', content: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isnt anything embarrassing hidden in the middle of text'

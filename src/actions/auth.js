@@ -170,23 +170,23 @@ export const getProfile = (username) => (dispatch) => {
 };
 
 // FOLLOW
-export const follow = (id) => (dispatch, getState) => {
-    const currentUser = getState().auth.user
-    const isUserNew = currentUser.followings.find(followingId => followingId === id)
-    if (isUserNew === undefined)
-        return dispatch({
-            type: FOLLOW,
-            payload: id
+export const follow = ({ creator, following }) => (dispatch) => {
+    axios.post(`http://localhost:8000/api/auth/connection`, { creator, following })
+        .then(res => {
+            return dispatch({
+                type: FOLLOW,
+                payload: res.data
+            })
         })
 };
 
 // UN FOLLOW
-export const unfollow = (id) => (dispatch, getState) => {
-    const currentUser = getState().auth.user
-    const isUserNew = currentUser.followings.find(followingId => followingId === id)
-    if (isUserNew !== undefined)
-        return dispatch({
-            type: UNFOLLOW,
-            payload: id
+export const unfollow = ({ creator, following }) => (dispatch) => {
+    axios.delete(`http://localhost:8000/api/auth/connection/${creator}/${following}`)
+        .then(res => {
+            return dispatch({
+                type: UNFOLLOW,
+                payload: creator
+            })
         })
 };

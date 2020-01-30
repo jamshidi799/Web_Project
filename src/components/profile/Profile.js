@@ -13,7 +13,7 @@ import Posts from '../Post/Posts'
 
 class Profile extends Component {
     state = {
-        profile: '',
+        follow: true,
     }
 
     componentDidMount() {
@@ -28,10 +28,10 @@ class Profile extends Component {
     getButton = (profile) => {
         if (profile.id === this.props.user.id)
             return <Link to="/edit_profile"><img src={editIcon} /></Link>
-        // const isFollowing = this.props.profile.followings.find(followingId => followingId === profile.id)
-        // if (isFollowing === undefined)
-        //     return <button className="btn btn-sm btn-info" onClick={() => this.onFollowClicked(profile)}>follow</button>
-        // return <button className="btn btn-sm btn-info" onClick={() => this.onUnFollowClicked(profile)}>unfollow</button>
+        const isFollowing = this.props.profile.following.find(connection => connection.creator === this.props.user.id)
+        if (isFollowing === undefined)
+            return <button className="btn btn-sm btn-info" onClick={() => this.onFollowClicked(profile)}>follow</button>
+        return <button className="btn btn-sm btn-info" onClick={() => this.onUnFollowClicked(profile)}>unfollow</button>
     }
 
     getNewPostBtn = (profile) => {
@@ -49,11 +49,11 @@ class Profile extends Component {
     }
 
     onFollowClicked = (profile) => {
-        this.props.follow(profile.id)
+        this.props.follow({ creator: this.props.user.id, following: profile.id })
     }
 
     onUnFollowClicked = (profile) => {
-        this.props.unfollow(profile.id)
+        this.props.unfollow({ creator: this.props.user.id, following: profile.id })
     }
 
     getNumberOfPost = (profile) => this.props.posts.filter(post => post.owner === profile.id).length
@@ -92,10 +92,10 @@ class Profile extends Component {
                                         <h6>{`${this.getNumberOfPost(profile)} post`}</h6>
                                     </div>
                                     <div className="col-5">
-                                        <h6>{`${this.getFollowerCount(profile)} Follower`}</h6>
+                                        <h6>{this.getFollowerCount(profile)} Follower</h6>
                                     </div>
                                     <div className="col-4">
-                                        <h6>{`${this.getFollowingCount(profile)} Following`}</h6>
+                                        <h6>{this.getFollowingCount(profile)} Following</h6>
                                     </div>
                                 </div>
                                 <p className="text-muted">{profile.profile.bio}</p>
