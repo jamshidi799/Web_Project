@@ -18,7 +18,7 @@ class Profile extends Component {
 
     componentDidMount() {
         this.props.getUsersList()
-        this.props.getProfile(this.props.profile.username)
+        this.props.getProfile(this.props.match.params.user_name)
     }
 
     updateState = (profile) => {
@@ -65,11 +65,12 @@ class Profile extends Component {
     getShortBio = (bio) => bio.length < 50 ? bio : bio.substring(0, 50) + "..."
 
     render() {
+        if (this.props.profile.username !== this.props.match.params.user_name)
+            this.props.getProfile(this.props.match.params.user_name)
         const profile = this.props.profile
-        console.log(profile, "profile")
         return (
             <div className="row">
-                <div className="col-8 container">
+                <div className="col-7 container">
                     <div className=" jumbotron m-3 bg-light">
                         <div className="row">
                             <div className="col-3">
@@ -97,7 +98,7 @@ class Profile extends Component {
                                         <h6>{`${this.getFollowingCount(profile)} Following`}</h6>
                                     </div> */}
                                 </div>
-                                <p className="text-muted">{profile.bio}</p>
+                                <p className="text-muted">{profile.profile.bio}</p>
                             </div>
                         </div>
                         <div className="row text-center">
@@ -117,7 +118,7 @@ class Profile extends Component {
                     </div>
 
                 </div>
-                <div className="col-2 container mt-3">
+                <div className="col-3 mt-3 follow-list">
                     <FollowList />
                 </div>
             </div >
@@ -131,7 +132,7 @@ const mapStateToProps = state => {
         posts: state.post.posts,
         user: state.auth.user,
         profilesList: state.auth.users,
-        Profile: state.auth.Profile,
+        profile: state.auth.profile,
     }
 }
 

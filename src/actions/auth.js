@@ -147,7 +147,7 @@ export const edit = (editedUser) => (dispatch, getState) => {
 
 // GET USER NAMES LIST
 export const getUsersList = () => (dispatch) => {
-    axios.get('http://localhost:8000/api/user/profile')
+    axios.get('http://localhost:8000/api/auth/profile')
         .then(res => {
             return dispatch({
                 type: GET_USERS_LIST,
@@ -159,7 +159,7 @@ export const getUsersList = () => (dispatch) => {
 
 // GET PROFILE
 export const getProfile = (username) => (dispatch) => {
-    axios.get(`http://localhost:8000/api/user/profile/${username}`)
+    axios.get(`http://localhost:8000/api/auth/profile/${username}`)
         .then(res => {
             return dispatch({
                 type: GET_PROFILE,

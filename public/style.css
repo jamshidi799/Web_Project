@@ -167,3 +167,14 @@ a[data-toggle="collapse"] {
   right: 20px;
   transform: translateY(-50%);
 }
+
+.follow-list {
+  width: 450px;
+  max-height: 400px;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.follow-list::-webkit-scrollbar {
+  display: none;
+}

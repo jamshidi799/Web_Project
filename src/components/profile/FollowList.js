@@ -15,13 +15,12 @@ class FollowList extends Component {
     useStyles = makeStyles(theme => ({
         root: {
             display: 'flex',
-            flexWrap: 'wrap',
             justifyContent: 'space-around',
             overflow: 'hidden',
             backgroundColor: theme.palette.background.paper,
         },
         gridList: {
-            width: 250,
+            width: 350,
             height: 880,
         },
         icon: {

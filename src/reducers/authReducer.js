@@ -11,6 +11,7 @@ import {
     USER_LOADED,
     USER_LOADING,
     GET_PROFILE,
+    GET_USERS_LIST,
     AUTHENTICATED,
 } from "../actions/types";
 
@@ -96,6 +97,11 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 profile: action.payload
+            }
+        case GET_USERS_LIST:
+            return {
+                ...state,
+                users: action.payload
             }
         case AUTHENTICATED:
             return {

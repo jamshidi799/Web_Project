@@ -7,8 +7,7 @@ import Posts from '../Post/Posts'
 
 class Home extends Component {
     componentDidMount() {
-        // this.props.getPosts()
-        // this.props.getUsers()
+        this.props.getPosts()
     }
 
     render() {
