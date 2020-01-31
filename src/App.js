@@ -23,6 +23,7 @@ import Latest from './components/common/assortment/Latest';
 
 import { loadUser, authenticate } from "./actions/auth";
 import { getChannels } from './actions/channel'
+import { getPosts } from './actions/posts'
 
 class App extends Component {
 
@@ -31,6 +32,7 @@ class App extends Component {
       store.dispatch(authenticate())
       store.dispatch(loadUser())
       store.dispatch(getChannels())
+      store.dispatch(getPosts())
     }
   }
 

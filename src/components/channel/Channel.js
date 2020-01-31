@@ -21,13 +21,13 @@ class Channel extends Component {
             <React.Fragment>
                 <div className="container-fluid">
                     <div className="row">
-                        <div className="col-3 m-3">
+                        <div className="col-3 follow-list">
                             <ListOfAuthors channel={channel} />
                         </div>
                         <div className="col-6">
                             <ListOfPosts channel={channel} />
                         </div>
-                        <div className='col-2'>
+                        <div className='col-3'>
                             <AboutChannel channel={channel} />
                         </div>
                     </div>

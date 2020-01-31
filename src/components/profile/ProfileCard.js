@@ -17,7 +17,7 @@ class ProfileCard extends Component {
     render() {
         if (this.state.isClicked) {
             this.setState({ isClicked: false })
-            return <Redirect to={`/profile/${this.props.otherUser.username}`} />
+            return <Redirect to={`/profile/${this.props.user.username}`} />
         }
         return (
             <div onClick={this.onCardClick} style={{ width: 23 + 'rem', cursor: 'pointer' }}>
@@ -27,7 +27,7 @@ class ProfileCard extends Component {
                             <ImageAvatars avatar_src={smProfile} />
                         </div>
                         <div className='col-6 text-center'>
-                            <p className="text-secondary">{this.props.otherUser.username}</p>
+                            <p className="text-secondary">{this.props.user.username}</p>
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@ class ProfileCard extends Component {
 
 const mapStateToProps = state => {
     return {
-        currentUser: state.auth.user
+        // currentUser: state.auth.user
     }
 }
 

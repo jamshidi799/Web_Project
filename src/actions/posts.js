@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {GET_POSTS, GET_POST, DELETE_POST, ADD_POST, GET_TRENDS, GET_SUBS, GET_FOLLOWED, GET_LATEST} from './types'
+import { GET_POSTS, GET_POST, DELETE_POST, ADD_POST, GET_TRENDS, GET_SUBS, GET_FOLLOWED, GET_LATEST } from './types'
 
 // GET POSTS
 export const getPosts = () => (dispatch) => {

@@ -1,4 +1,4 @@
-import { GET_CHANNELS, ADD_CHANNEL, GET_CHANNEL, DELETE_CHANNEL } from "../actions/types"
+import { GET_CHANNELS, ADD_CHANNEL, GET_CHANNEL, DELETE_CHANNEL, DELETE_POST_FROM_CHANNEL } from "../actions/types"
 
 const initialState = {
     currentchannel: {
@@ -47,6 +47,14 @@ export default function (state = initialState, actions) {
             return {
                 ...state,
                 channels: [...state.channels, actions.payload]
+            }
+        case DELETE_POST_FROM_CHANNEL:
+            return {
+                ...state,
+                currentchannel: {
+                    ...state.currentchannel,
+                    posts: state.currentchannel.posts.filter(post => post.id !== actions.payload)
+                }
             }
         default:
             return state

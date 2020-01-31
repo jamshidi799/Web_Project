@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
@@ -8,9 +9,14 @@ import ListSubheader from "@material-ui/core/ListSubheader";
 
 import smProfile from '../../img/Animals_533.jpg'
 import ImageAvatars from "../common/Avatar";
+import { getUsersList } from '../../actions/auth'
 
 
 class ListOfAuthors extends Component {
+    componentDidMount() {
+        this.props.getUsersList()
+    }
+
     useStyles = makeStyles(theme => ({
         root: {
             display: 'flex',
@@ -20,8 +26,7 @@ class ListOfAuthors extends Component {
             backgroundColor: theme.palette.background.paper,
         },
         gridList: {
-            width: 300,
-            height: 880,
+            width: 500,
         },
         icon: {
             color: 'rgba(255, 255, 255, 0.54)',
@@ -37,6 +42,7 @@ class ListOfAuthors extends Component {
     }
 
     getUserCard = (user) => {
+        const isAuthor = this.props.channel.authors.find(author => user.id === author.id)
         return (
             <div className="container-fluid" key={user.id}>
                 <div className="row align-items-center">
@@ -46,8 +52,9 @@ class ListOfAuthors extends Component {
                     <div className="col-4">
                         <p className="text-secondary">{user.username}</p>
                     </div>
-                    <div className="col-4">
-                        <button className="btn btn-sm btn-info">add</button>
+                    <div className="col-4 text-right">
+                        {isAuthor === undefined ? <button className="btn btn-sm btn-info">add</button> :
+                            <button className="btn btn-sm btn-info">remove</button>}
                     </div>
                 </div>
 
@@ -64,21 +71,18 @@ class ListOfAuthors extends Component {
 
                         <button className="btn btn-sm btn-info mr-1">follow</button>
                         <span>  </span>
-                        <button className="btn btn-sm btn-info">add post</button>
+                        <Link to={`/newPost/${this.props.channel.id}`}>
+                            <button className="btn btn-sm btn-info">add post</button>
+                        </Link>
                     </div>
                 </div>
                 <div className='d-flex justify-content-center'>
                     <GridList cellHeight={"auto"} className={classes.gridList}>
-                        <ListSubheader component="div">
-                            <hr />
-                            <h4>Authors</h4>
-                        </ListSubheader>
                         <hr />
-                        <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
+                        <h4>Authors</h4>
+                        <hr />
+                        <GridListTile cols={2}>
                             {this.props.users.map(user => this.getUserCard(user))}
-                            <div className="container">
-
-                            </div>
                         </GridListTile>
                     </GridList>
                 </div>
@@ -95,4 +99,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {})(ListOfAuthors)
+export default connect(mapStateToProps, { getUsersList })(ListOfAuthors)

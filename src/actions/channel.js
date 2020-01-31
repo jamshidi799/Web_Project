@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { GET_CHANNELS, GET_CHANNEL, ADD_CHANNEL, DELETE_CHANNEL } from './types'
+import { GET_CHANNELS, GET_CHANNEL, ADD_CHANNEL, DELETE_CHANNEL, DELETE_POST_FROM_CHANNEL } from './types'
 
 // GET channelS
 export const getChannels = () => (dispatch) => {
@@ -43,4 +43,15 @@ export const deleteChannel = id => (dispatch) => {
                 payload: id
             })
         }).catch(err => console.log(err))
+}
+
+// DELETE POST
+export const deletePost = (id) => (dispatch) => {
+    axios.delete(`http://localhost:8000/api/posts/${id}`)
+        .then(res => {
+            dispatch({
+                type: DELETE_POST_FROM_CHANNEL,
+                payload: id
+            })
+        })
 }

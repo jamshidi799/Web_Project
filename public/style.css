@@ -169,8 +169,7 @@ a[data-toggle="collapse"] {
 }
 
 .follow-list {
-  width: 450px;
-  max-height: 400px;
+  max-height: 520px;
   overflow: auto;
   white-space: nowrap;
   border-style: double;

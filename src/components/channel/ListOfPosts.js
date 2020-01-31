@@ -6,6 +6,7 @@ import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 
 import PostCard from "../Post/PostCard";
+import { deletePost } from '../../actions/channel'
 
 
 class ListOfPosts extends Component {
@@ -26,9 +27,14 @@ class ListOfPosts extends Component {
         },
     }));
 
-    getDeletePostBtn = () => {
+
+    onDeletePostBtnClicked = (id) => this.props.deletePost(id)
+
+    getDeletePostBtn = (id) => {
         if (this.props.channel.owner === this.props.user.id)
-            return <button className="btn btn-sm btn-secondary">delete</button>
+            return (
+                <button className="btn btn-sm btn-secondary"
+                    onClick={() => this.onDeletePostBtnClicked(id)}>delete</button>)
     }
 
     render() {
@@ -42,7 +48,7 @@ class ListOfPosts extends Component {
                                 <div className="container-fluid m-3" key={post.id}>
                                     <div className="card" style={{ width: "100%" }} >
                                         <PostCard post={post} />
-                                        {this.getDeletePostBtn()}
+                                        {this.getDeletePostBtn(post.id)}
                                     </div>
                                     <hr />
                                 </div>
@@ -64,4 +70,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {})(ListOfPosts)
+export default connect(mapStateToProps, { deletePost })(ListOfPosts)
