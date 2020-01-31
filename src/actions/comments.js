@@ -1,56 +1,50 @@
 import axios from 'axios'
 
-import { GET_COMMENTS, GET_COMMENT, ADD_COMMENT, LIKE_COMMENT, DISLIKE_COMMENT } from './types'
+import { GET_COMMENTS, GET_COMMENT, ADD_COMMENT, DELETE_COMMENT, LIKE_COMMENT, DISLIKE_COMMENT } from './types'
 
-// GET COMMENTS
-export const getComments = (postid) => (dispatch) => {
-    axios.get(`http://localhost:8000/api/posts/${postid}/comments`)
+
+// ADD COMMENT
+export const addComment = comment => (dispatch) => {
+    axios.post(`http://localhost:8000/api/posts/${comment.post}/comments`, comment)
         .then(res => {
-            return dispatch({
-                type: GET_COMMENTS,
+            dispatch({
+                type: ADD_COMMENT,
                 payload: res.data
             })
         })
 }
 
-export const getComment = (commentId) => (dispatch) => {
-    // console.log('action before')
-    return dispatch({
-        type: GET_COMMENT,
-        payload: commentId
-    })
-}
-
-// ADD COMMENT
-export const addComment = Comment => (dispatch, getState) => {
-    console.log(getState())
-    const id = getState().comment.comments.length + 1
-    dispatch({
-        type: ADD_COMMENT,
-        payload: { ...Comment, id }
-    })
+// DELETE COMMENT
+export const deleteComment = ({ postid, commentid }) => (dispatch) => {
+    axios.delete(`http://localhost:8000/api/posts/${postid}/comments/${commentid}`)
+        .then(res => {
+            dispatch({
+                type: DELETE_COMMENT,
+                payload: commentid
+            })
+        })
 }
 
 // LIKE COMMENT
-export const likeComment = comment => (dispatch, getState) => {
-    const userid = getState().auth.user.id
+export const likeComment = ({ comment, userid }) => (dispatch) => {
     const isUserInlikes = comment.like.find(id => id === userid)
-    if (isUserInlikes === undefined)
+    if (isUserInlikes === undefined) {
+        axios.post(`http://localhost:8000/api/posts/comments/${comment.id}/like/${userid}`)
         dispatch({
             type: LIKE_COMMENT,
             payload: { ...comment, like: [...comment.like, userid] }
         })
-    // else raise error or do nothing
+    }
 }
 
 // DISLIKE COMMENT
-export const dislikeComment = comment => (dispatch, getState) => {
-    const userid = getState().auth.user.id
-    const isUserInDislikes = comment.dislike.find(id => id === userid)
-    if (isUserInDislikes === undefined)
+export const dislikeComment = ({ comment, userid }) => (dispatch, getState) => {
+    const isUserIndislikes = comment.dislike.find(id => id === userid)
+    if (isUserIndislikes === undefined) {
+        axios.post(`http://localhost:8000/api/posts/comments/${comment.id}/dislike/${userid}`)
         dispatch({
             type: DISLIKE_COMMENT,
             payload: { ...comment, dislike: [...comment.dislike, userid] }
         })
-    // else raise error or do nothings
+    }
 }

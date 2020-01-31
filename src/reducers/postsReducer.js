@@ -6,7 +6,12 @@ import {
     GET_FOLLOWED,
     GET_SUBS,
     GET_TRENDS,
-    GET_LATEST
+    GET_LATEST,
+    ADD_COMMENT,
+    DELETE_COMMENT,
+    EDIT_COMMENT,
+    LIKE_COMMENT,
+    DISLIKE_COMMENT,
 } from "../actions/types"
 
 const initialState = {
@@ -23,6 +28,8 @@ const initialState = {
                 "owner": 1,
                 "content": "added successfully. You may add another comment below",
                 "date": "2020-01-11T21:25:21.749648Z",
+                "like": [],
+                "dislike": [],
                 "reply_to": null
             }
         ],
@@ -69,25 +76,35 @@ export default function (state = initialState, actions) {
                 ...state,
                 posts: [...state.posts, actions.payload]
             }
+        case ADD_COMMENT:
+            return {
+                ...state,
+                currentPost: { ...state.currentPost, comments: [...state.currentPost.comments, actions.payload] }
+            }
+        case DELETE_COMMENT:
+            return {
+                ...state,
+                currentPost: { ...state.currentPost, comments: state.currentPost.comments.filter(comment => comment.id !== actions.payload) }
+            }
         case GET_FOLLOWED:
-            return {
-                ...state,
-                posts: actions.payload
-            }
         case GET_SUBS:
-            return {
-                ...state,
-                posts: actions.payload
-            }
         case GET_TRENDS:
-            return {
-                ...state,
-                posts: actions.payload
-            }
         case GET_LATEST:
             return {
                 ...state,
                 posts: actions.payload
+            }
+        case LIKE_COMMENT:
+        case DISLIKE_COMMENT:
+            return {
+                ...state,
+                currentPost: {
+                    ...state.currentPost, comments: state.currentPost.comments.map(comment => {
+                        if (comment.id === actions.payload.id)
+                            return actions.payload
+                        return comment
+                    })
+                }
             }
         default:
             return state

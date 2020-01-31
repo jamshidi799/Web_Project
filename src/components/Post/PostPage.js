@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getComments, addComment } from '../../actions/comments'
+import { addComment } from '../../actions/comments'
 import { getPost } from '../../actions/posts'
 import Comment from '../common/Comment'
 
@@ -43,7 +43,6 @@ class PostPage extends Component {
             )
     }
 
-
     render() {
         const { id, title, content } = this.props.post
         return (
@@ -75,12 +74,7 @@ class PostPage extends Component {
                             </form>
                         </div>
                         <br />
-                        {
-                            this.props.post.comments.map(comment => {
-                                return <Comment key={comment.id} comment={comment} />
-                            })
-                        }
-
+                        <Comment comments={this.props.post.comments} />
                     </div>
 
                 </div>

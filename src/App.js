@@ -57,6 +57,10 @@ class App extends Component {
                 <PrivateRoute exact path='/post/:post_id' component={PostPage} />
                 <PrivateRoute exact path='/edit_profile' component={EditProfile} />
                 <PrivateRoute exact path='/search/:search' component={SearchPage} />
+
+                <Route exact path='/signin' component={SignIn} />
+                <Route exact path='/signup' component={SignUp} />
+
               </Switch>
             </div>
           </div>
