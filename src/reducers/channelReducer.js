@@ -15,7 +15,8 @@ const initialState = {
                 "owner": 21,
                 "channel": 1,
                 "title": "lenovo",
-                "image": null
+                "image": null,
+                "like": []
             }
         ]
     },

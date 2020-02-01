@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 class PostCard extends Component {
     render() {
-        const { id, title } = this.props.post
+        const { id, title, like } = this.props.post
         return (
             <Fragment>
                 <div className="card">
@@ -14,8 +14,7 @@ class PostCard extends Component {
                         <Link to={`/post/${id}`}><h5 className="card-title">{title}</h5></Link>
                         <hr />
                         <div><span>132,231 views</span></div>
-                        <img src={likeIcon} alt="like" /> <span>3.1k   </span>
-                        <img src={likeIcon} alt="unlike" /> <span>123    </span>
+                        <img src={likeIcon} alt="like" /> <span>{like.length}   </span>
 
                     </div>
                 </div>
