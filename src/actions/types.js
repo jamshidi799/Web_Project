@@ -5,6 +5,7 @@ export const ADD_POST = "ADD_POST"
 export const EDIT_POST = "EDIT_POST"
 export const LIKE_POST = "LIKE_POST"
 export const DISLIKE_POST = "DISLIKE_POST"
+export const GET_FEED = "GET_FEED"
 
 export const GET_CHANNELS = "GET_CHANNELS"
 export const GET_CHANNEL = "GET_CHANNEL"

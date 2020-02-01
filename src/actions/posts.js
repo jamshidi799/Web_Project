@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {
     GET_POSTS, GET_POST, DELETE_POST, ADD_POST, LIKE_POST, DISLIKE_POST
-    , GET_TRENDS, GET_SUBS, GET_FOLLOWED, GET_LATEST
+    , GET_FEED
 } from './types'
 import { tokenConfig } from './auth'
 
@@ -70,45 +70,13 @@ export const likePost = ({ post, userid }) => (dispatch, getState) => {
 }
 
 // get trend posts
-export const getTrends = () => (dispatch, getState) => {
-    axios.get('http://localhost:8000/api/home/trending/', tokenConfig(getState))
+export const getFeed = (mode) => (dispatch, getState) => {
+    axios.get(`http://localhost:8000/api/feed/${mode}`, tokenConfig(getState))
         .then(res => {
             return dispatch({
-                type: GET_TRENDS,
+                type: GET_FEED,
                 payload: res.data
             })
         }).catch(err => console.log(err))
 }
 
-// get subscription posts
-export const getSubs = () => (dispatch, getState) => {
-    axios.get('http://localhost:8000/api/home/subscriptions/', tokenConfig(getState))
-        .then(res => {
-            return dispatch({
-                type: GET_SUBS,
-                payload: res.data
-            })
-        }).catch(err => console.log(err))
-}
-
-// get followed posts
-export const getFollowed = () => (dispatch, getState) => {
-    axios.get('http://localhost:8000/api/home/followed/', tokenConfig(getState))
-        .then(res => {
-            return dispatch({
-                type: GET_FOLLOWED,
-                payload: res.data
-            })
-        }).catch(err => console.log(err))
-}
-
-// get latest posts
-export const getLatest = () => (dispatch, getState) => {
-    axios.get('http://localhost:8000/api/home/latest/', tokenConfig(getState))
-        .then(res => {
-            return dispatch({
-                type: GET_LATEST,
-                payload: res.data
-            })
-        }).catch(err => console.log(err))
-}

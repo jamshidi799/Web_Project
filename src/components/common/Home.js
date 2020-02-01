@@ -6,8 +6,9 @@ import { getUsersList } from '../../actions/auth'
 import Posts from '../Post/Posts'
 
 class Home extends Component {
+
     componentDidMount() {
-        // this.props.getPosts()
+        this.props.getPosts()
     }
 
     render() {

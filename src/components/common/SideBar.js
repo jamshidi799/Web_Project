@@ -10,16 +10,16 @@ const SideBar = () => {
                         <Link onClick={onHome} to="/" aria-expanded="false" >Home</Link>
                     </li>
                     <li id="trend">
-                        <Link onClick={onTrend} to="/trending">Trending</Link>
+                        <Link onClick={onTrend} to="/feed/trending">Trending</Link>
                     </li>
                     <li id="followed">
-                        <Link onClick={onFollowed} to="/followed" >Followed</Link>
+                        <Link onClick={onLiked} to="/feed/liked" >Liked Post</Link>
                     </li>
                     <li id="sub">
-                        <Link onClick={onSub} to="/subscriptions">Subscription</Link>
+                        <Link onClick={onSub} to="/feed/subscriptions">Subscription</Link>
                     </li>
                     <li id="latest">
-                        <Link onClick={onLatest} to="/latest">Latest</Link>
+                        <Link onClick={onLatest} to="/feed/latest">Latest</Link>
                     </li>
                 </ul>
             </nav>
@@ -39,7 +39,7 @@ const SideBar = () => {
         const clicked = document.getElementById("trend");
         clicked.classList.add("active");
     }
-    function onFollowed() {
+    function onLiked() {
         const active = document.getElementsByClassName("active")[0];
         active.classList.remove("active");
         const clicked = document.getElementById("followed");

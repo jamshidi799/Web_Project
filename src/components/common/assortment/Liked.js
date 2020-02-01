@@ -1,12 +1,12 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
 import { getFeed } from '../../../actions/posts'
 import Posts from '../../Post/Posts'
 
-class Latest extends Component {
+class Liked extends Component {
     componentDidMount() {
-        this.props.getFeed('latest')
+        this.props.getFeed('liked')
     }
 
     render() {
@@ -27,4 +27,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { getFeed })(Latest)
+export default connect(mapStateToProps, { getFeed })(Liked)

@@ -17,7 +17,7 @@ import PrivateRoute from "./components/common/PrivateRoute";
 import EditProfile from './components/profile/EditProfile';
 import SideBar from './components/common/SideBar';
 import Trend from './components/common/assortment/Trend';
-import Followed from './components/common/assortment/Followed';
+import Liked from './components/common/assortment/Liked';
 import Subscription from './components/common/assortment/Subscription';
 import Latest from './components/common/assortment/Latest';
 
@@ -47,10 +47,10 @@ class App extends Component {
             <div className="container-fluid">
               <Switch>
                 <PrivateRoute exact path='/' component={Home} />
-                <PrivateRoute exact path='/trending' component={Trend} />
-                <PrivateRoute exact path='/followed' component={Followed} />
-                <PrivateRoute exact path='/latest' component={Latest} />
-                <PrivateRoute exact path='/subscriptions' component={Subscription} />
+                <PrivateRoute exact path='/feed/trending' component={Trend} />
+                <PrivateRoute exact path='/feed/liked' component={Liked} />
+                <PrivateRoute exact path='/feed/latest' component={Latest} />
+                <PrivateRoute exact path='/feed/subscriptions' component={Subscription} />
 
                 <PrivateRoute exact path='/profile/:user_name' component={Profile} />
                 <PrivateRoute exact path='/channel/:channel_id' component={Channel} />

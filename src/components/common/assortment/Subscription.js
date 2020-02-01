@@ -1,12 +1,20 @@
-import React,{Component} from "react";
-import SubPosts from "../../Post/postAssortment/SubPosts";
+import React, { Component } from "react";
+import { connect } from 'react-redux'
 
-class Subscription extends Component{
+import { getFeed } from '../../../actions/posts'
+import Posts from '../../Post/Posts'
+
+
+class Subscription extends Component {
+    componentDidMount() {
+        this.props.getFeed('subscriptions')
+    }
+
     render() {
-        return(
+        return (
             <div className="container-fluid">
                 <div className="row text-center text-lg-left">
-                    <SubPosts />
+                    <Posts posts={this.props.posts} />
                 </div>
             </div>
         )
@@ -14,4 +22,10 @@ class Subscription extends Component{
 
 }
 
-export default Subscription;
+const mapStateToProps = state => {
+    return {
+        posts: state.post.posts,
+    }
+}
+
+export default connect(mapStateToProps, { getFeed })(Subscription)

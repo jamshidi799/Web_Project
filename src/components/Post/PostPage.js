@@ -52,6 +52,8 @@ class PostPage extends Component {
             )
     }
 
+    getTimeCreated = date => date.split('T')[0]
+
     render() {
         const { title, content } = this.props.post
 
@@ -69,6 +71,9 @@ class PostPage extends Component {
                         <div >
                             <span className="text-success mr-2">132,231 views</span>
                             <img src={likeIcon} alt="like" onClick={this.onLikeClicked} /> <span>{this.props.post.like.length}   </span>
+                        </div>
+                        <div >
+                            <small>created at {this.getTimeCreated(this.props.post.date)}</small>
                         </div>
                     </div>
                     <div className="jumbotron">

@@ -4,6 +4,9 @@ import likeIcon from '../../icons/icons8-facebook-like-24.png'
 import { Link } from 'react-router-dom'
 
 class PostCard extends Component {
+
+    getTimeCreated = date => date.split('T')[0]
+
     render() {
         const { id, title, like } = this.props.post
         return (
@@ -15,6 +18,9 @@ class PostCard extends Component {
                         <hr />
                         <div><span>132,231 views</span></div>
                         <img src={likeIcon} alt="like" /> <span>{like.length}   </span>
+                        <div className="text-muted ">
+                            <small>{this.getTimeCreated(this.props.post.date)}</small>
+                        </div>
 
                     </div>
                 </div>
