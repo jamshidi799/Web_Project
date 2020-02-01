@@ -1,14 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux'
+
 import PropTypes from 'prop-types';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Posts from '../Post/Posts';
+import ListOfChannel from '../channel/ListOfChannel';
+import FollowList from '../profile/FollowList';
 
 function TabPanel(props) {
-    const {children, value, index, ...other} = props;
+    const { children, value, index, ...other } = props;
 
     return (
         <Typography
@@ -44,7 +49,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function SimpleTabs(props) {
+function SimpleTabs(props) {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
@@ -62,17 +67,24 @@ export default function SimpleTabs(props) {
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
-                {props.search} Searching... in Posts
+                <Posts posts={props.posts} />
             </TabPanel>
             <TabPanel value={value} index={1}>
-                {props.search} Searching... in Users
+                <FollowList users={props.users} />
             </TabPanel>
             <TabPanel value={value} index={2}>
-                {props.search} Searching... in Channels
+                <ListOfChannel channels={props.channels} />
             </TabPanel>
         </div>
     );
-
-
-
 }
+
+const mapStateToProps = state => {
+    return {
+        posts: state.search.posts,
+        channels: state.search.channels,
+        users: state.search.users
+    }
+}
+
+export default connect(mapStateToProps)(SimpleTabs)

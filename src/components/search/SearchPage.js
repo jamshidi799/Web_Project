@@ -1,23 +1,32 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
+import { connect } from 'react-redux'
+
 import CenteredTabs from "./TabsOfSearch";
+import { search } from '../../actions/search'
 
 
-class SearchPage extends Component{
+class SearchPage extends Component {
     state = {
-        search : null
+        search: null
     }
 
     componentDidMount() {
         this.setState(() => this.props.match.params);
+        this.props.search(this.props.match.params.search)
     }
 
     render() {
-        return(
+        return (
             <div className='d-flex justify-content-center'>
-                <CenteredTabs search={this.state.search}/>
+                <CenteredTabs search={this.state.search} />
             </div>
         );
     }
 }
 
-export default SearchPage
+const mapStateToProps = state => {
+    return {
+    }
+}
+
+export default connect(mapStateToProps, { search })(SearchPage)

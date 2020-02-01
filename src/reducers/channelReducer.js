@@ -16,7 +16,8 @@ const initialState = {
                 "channel": 1,
                 "title": "lenovo",
                 "image": null,
-                "like": []
+                "like": [],
+                "date": "2020-01-29T12:55:16.499243Z",
             }
         ]
     },

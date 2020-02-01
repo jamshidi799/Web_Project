@@ -44,7 +44,6 @@ class ListOfChannel extends Component {
 
 const mapStateToProps = state => {
     return {
-        channels: state.channel.channels,
     }
 }
 

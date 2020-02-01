@@ -51,5 +51,8 @@ export const GET_FOLLOWED = "GET_FOLLOWED";
 export const GET_LATEST = "GET_LATEST";
 
 
+export const GET_SEARCH = "GET_SEARCH";
+
+
 
 

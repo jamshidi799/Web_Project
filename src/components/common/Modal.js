@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
+
 import { Button, Modal } from 'react-bootstrap'
 
 import ListOfChannel from '../channel/ListOfChannel'
 
-export default function Example() {
+function Example(props) {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -19,7 +21,7 @@ export default function Example() {
                 <Modal.Header closeButton>
                     <Modal.Title>Channels</Modal.Title>
                 </Modal.Header>
-                <Modal.Body><ListOfChannel close={handleClose} /></Modal.Body>
+                <Modal.Body><ListOfChannel close={handleClose} channels={props.channels} /></Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
@@ -29,3 +31,11 @@ export default function Example() {
         </>
     );
 }
+
+const mapStateToProps = state => {
+    return {
+        channels: state.channel.channels
+    }
+}
+
+export default connect(mapStateToProps)(Example)

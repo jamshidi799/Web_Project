@@ -47,7 +47,6 @@ class FollowList extends Component {
 
 const mapStateToProps = state => {
     return {
-        users: state.auth.users
     }
 }
 

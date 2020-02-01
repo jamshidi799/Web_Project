@@ -119,7 +119,7 @@ class Profile extends Component {
 
                 </div>
                 <div className="col-3 mt-3 follow-list">
-                    <FollowList />
+                    <FollowList users={this.props.profilesList}/>
                 </div>
             </div >
         )
