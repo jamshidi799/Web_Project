@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addComment } from '../../actions/comments'
-import { getPost } from '../../actions/posts'
+import { getPost, deletePost, likePost } from '../../actions/posts'
 import Comment from '../common/Comment'
 
 
 import img from '../../img/img1.jpg'
 import likeIcon from '../../icons/icons8-facebook-like-24.png'
+import { Redirect } from 'react-router'
 
 class PostPage extends Component {
     state = {
-        comment: ''
+        comment: '',
+        isPostDeleted: false,
     }
 
     componentDidMount() {
@@ -32,19 +34,30 @@ class PostPage extends Component {
         this.setState({ [e.target.name]: e.target.value })
     }
 
+    onDeletePostClicked = () => {
+        this.props.deletePost(this.props.post.id)
+        this.setState({ ...this.state, isPostDeleted: true })
+    }
+
+    onLikeClicked = () => this.props.likePost({ post: this.props.post, userid: this.props.user.id })
+
     getButtons = () => {
-        if (this.props.post.userid === this.props.user.id)
+        if (this.props.post.owner === this.props.user.id)
             return (
                 <div className="mb-3">
                     <button className="btn btn-sm btn-dark">edit</button>
                     <span>  </span>
-                    <button className="btn btn-sm btn-dark">delete</button>
+                    <button className="btn btn-sm btn-dark" onClick={this.onDeletePostClicked}>delete</button>
                 </div>
             )
     }
 
     render() {
-        const { id, title, content } = this.props.post
+        const { title, content } = this.props.post
+
+        if (this.state.isPostDeleted)
+            return <Redirect to="/" />
+
         return (
             <div className="container">
                 <div className="jumbotron">
@@ -53,7 +66,10 @@ class PostPage extends Component {
                     <div className="card-body">
                         <h3 className="card-title text-success">{title}</h3>
                         <p className="card-text font-weight-normal text-body"> {content}</p>
-                        <div ><span className="text-success">132,231 views</span></div>
+                        <div >
+                            <span className="text-success mr-2">132,231 views</span>
+                            <img src={likeIcon} alt="like" onClick={this.onLikeClicked} /> <span>{this.props.post.like.length}   </span>
+                        </div>
                     </div>
                     <div className="jumbotron">
                         <div className="row">
@@ -92,4 +108,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { addComment, getPost })(PostPage)
+export default connect(mapStateToProps, { addComment, getPost, deletePost, likePost })(PostPage)

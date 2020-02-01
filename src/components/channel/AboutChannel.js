@@ -23,7 +23,7 @@ class AboutChannel extends Component {
                     />
                     <CardContent>
                         <div className="d-flex justify-content-center flex-column">
-                            <b className="d-flex justify-content-center">channel name</b>
+                            <b className="d-flex justify-content-center">{this.props.channel.name}</b>
                             <h4 className="d-flex justify-content-center">{this.props.channel.id}</h4>
                         </div>
                     </CardContent>

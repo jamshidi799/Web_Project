@@ -17,7 +17,7 @@ class NewChannel extends Component {
     onSubmit = e => {
         e.preventDefault()
         const { name, about } = this.state
-        const channel = { owner: this.props.user.id, name, about, posts: [] }
+        const channel = { owner: this.props.user.id, name, about, posts: [], authors: [] }
         this.setState({ ...this.state, isChannelCreated: true })
         this.props.addChannel(channel)
     }

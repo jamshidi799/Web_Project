@@ -1,4 +1,4 @@
-import { GET_CHANNELS, ADD_CHANNEL, GET_CHANNEL, DELETE_CHANNEL, DELETE_POST_FROM_CHANNEL } from "../actions/types"
+import { GET_CHANNELS, ADD_CHANNEL, GET_CHANNEL, DELETE_CHANNEL, DELETE_POST_FROM_CHANNEL, ADD_AUTHOR, REMOVE_AUTHOR } from "../actions/types"
 
 const initialState = {
     currentchannel: {
@@ -54,6 +54,22 @@ export default function (state = initialState, actions) {
                 currentchannel: {
                     ...state.currentchannel,
                     posts: state.currentchannel.posts.filter(post => post.id !== actions.payload)
+                }
+            }
+        case ADD_AUTHOR:
+            return {
+                ...state,
+                currentchannel: {
+                    ...state.currentchannel,
+                    authors: [...state.currentchannel.authors, actions.payload]
+                }
+            }
+        case REMOVE_AUTHOR:
+            return {
+                ...state,
+                currentchannel: {
+                    ...state.currentchannel,
+                    authors: state.currentchannel.authors.filter(author => author !== actions.payload)
                 }
             }
         default:

@@ -3,6 +3,8 @@ import {
     ADD_POST,
     GET_POST,
     DELETE_POST,
+    LIKE_POST,
+    DISLIKE_POST,
     GET_FOLLOWED,
     GET_SUBS,
     GET_TRENDS,
@@ -75,6 +77,22 @@ export default function (state = initialState, actions) {
             return {
                 ...state,
                 posts: [...state.posts, actions.payload]
+            }
+        case LIKE_POST:
+            return {
+                ...state,
+                currentPost: {
+                    ...state.currentPost,
+                    like: [...state.currentPost.like, actions.payload]
+                }
+            }
+        case DISLIKE_POST:
+            return {
+                ...state,
+                currentPost: {
+                    ...state.currentPost,
+                    like: state.currentPost.like.filter(like => like !== actions.payload)
+                }
             }
         case ADD_COMMENT:
             return {

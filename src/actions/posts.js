@@ -1,5 +1,8 @@
 import axios from 'axios'
-import { GET_POSTS, GET_POST, DELETE_POST, ADD_POST, GET_TRENDS, GET_SUBS, GET_FOLLOWED, GET_LATEST } from './types'
+import {
+    GET_POSTS, GET_POST, DELETE_POST, ADD_POST, LIKE_POST, DISLIKE_POST
+    , GET_TRENDS, GET_SUBS, GET_FOLLOWED, GET_LATEST
+} from './types'
 
 // GET POSTS
 export const getPosts = () => (dispatch) => {
@@ -44,6 +47,25 @@ export const addPost = post => (dispatch) => {
                 payload: res.data
             })
         }).catch(error => console.log(error))
+}
+
+// LIKE COMMENT
+export const likePost = ({ post, userid }) => (dispatch) => {
+    const isUserInlikes = post.like.find(id => id === userid)
+    if (isUserInlikes === undefined) {
+        axios.post(`http://localhost:8000/api/posts/${post.id}/like/${userid}`)
+        dispatch({
+            type: LIKE_POST,
+            payload: userid
+        })
+    }
+    else {
+        axios.delete(`http://localhost:8000/api/posts/${post.id}/like/${userid}`)
+        dispatch({
+            type: DISLIKE_POST,
+            payload: userid
+        })
+    }
 }
 
 // get trend posts

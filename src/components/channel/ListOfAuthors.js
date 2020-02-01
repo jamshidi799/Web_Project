@@ -10,6 +10,7 @@ import ListSubheader from "@material-ui/core/ListSubheader";
 import smProfile from '../../img/Animals_533.jpg'
 import ImageAvatars from "../common/Avatar";
 import { getUsersList } from '../../actions/auth'
+import { addAuthor, removeAuthor } from '../../actions/channel'
 
 
 class ListOfAuthors extends Component {
@@ -33,13 +34,12 @@ class ListOfAuthors extends Component {
         },
     }));
 
-    onAddClicked = () => {
-
+    onAddClicked = authorid => {
+        this.props.addAuthor({ channelid: this.props.channel.id, authorid })
+        this.render()
     }
 
-    onRemoveClicked = () => {
-
-    }
+    onRemoveClicked = authorid => this.props.removeAuthor({ channelid: this.props.channel.id, authorid })
 
     getUserCard = (user) => {
         const isAuthor = this.props.channel.authors.find(author => user.id === author.id)
@@ -53,13 +53,19 @@ class ListOfAuthors extends Component {
                         <p className="text-secondary">{user.username}</p>
                     </div>
                     <div className="col-4 text-right">
-                        {isAuthor === undefined ? <button className="btn btn-sm btn-info">add</button> :
-                            <button className="btn btn-sm btn-info">remove</button>}
+                        {this.getAuthorBtn(isAuthor, user)
+                        }
                     </div>
                 </div>
-
             </div>
         )
+    }
+
+    getAuthorBtn = (isAuthor, user) => {
+        if (isAuthor === undefined)
+            return <button className="btn btn-sm btn-info" onClick={() => this.onAddClicked(user.id)}>add</button>
+        return <button className="btn btn-sm btn-info" onClick={() => this.onRemoveClicked(user.id)} >remove</button>
+
     }
 
     render() {
@@ -99,4 +105,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { getUsersList })(ListOfAuthors)
+export default connect(mapStateToProps, { getUsersList, addAuthor, removeAuthor })(ListOfAuthors)

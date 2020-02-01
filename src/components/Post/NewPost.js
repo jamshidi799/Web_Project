@@ -17,11 +17,11 @@ class NewPost extends Component {
     onSubmit = e => {
         e.preventDefault()
         const { title, content } = this.state
-        const channel = this.props.match.params.channel_id
-        const post = { channel, title, content, image_url: "_", owner: this.props.user.id }
-        console.log(post)
+        let channel = this.props.match.params.channel_id
+        if (channel === '0')
+            channel = null
+        const post = { channel, title, content, image_url: "_", owner: this.props.user.id, like: [] }
         this.setState({ ...this.state, isPostCreated: true })
-        console.log(post)
         this.props.addPost(post)
     }
 
