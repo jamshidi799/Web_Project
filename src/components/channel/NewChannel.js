@@ -7,6 +7,7 @@ class NewChannel extends Component {
     state = {
         name: "",
         about: "",
+        image: '',
         isChannelCreated: false
     }
 

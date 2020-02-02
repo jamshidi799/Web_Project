@@ -53,6 +53,10 @@ export const GET_LATEST = "GET_LATEST";
 
 export const GET_SEARCH = "GET_SEARCH";
 
+export const GET_NOTIFICATION = "GET_NOTIFICATION";
+export const DELETE_NOTIFICATION = "DELETE_NOTIFICATION";
+
+
 
 
 

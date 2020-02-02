@@ -4,7 +4,7 @@ import {
 } from './types'
 import { tokenConfig } from './auth'
 
-// GET POSTS
+
 export const search = (key) => (dispatch, getState) => {
     axios.get(`http://localhost:8000/api/feed/search/${key}`, tokenConfig(getState))
         .then(res => {

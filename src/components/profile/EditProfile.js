@@ -45,8 +45,11 @@ class EditProfile extends Component {
 
     onSubmit = e => {
         e.preventDefault()
-        const profile = { user: this.state.user, bio: this.state.bio }
-        this.props.edit(profile)
+        const user = {
+            ...this.state.user, profile: { bio: this.state.bio },
+            creator: [...this.props.user.creator], following: [...this.props.user.following]
+        }
+        this.props.edit(user)
         this.setState({ ...this.state, isRegistered: true })
     }
 

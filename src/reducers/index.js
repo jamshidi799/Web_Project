@@ -3,6 +3,7 @@ import post from "./postsReducer";
 import auth from './authReducer'
 import channel from './channelReducer'
 import search from './searchReducer'
+import notification from './notificationReducer'
 
 
 const rootReducer = combineReducers({
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
     auth,
     channel,
     search,
+    notification,
 });
 
 export default rootReducer

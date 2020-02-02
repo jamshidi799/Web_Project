@@ -135,7 +135,7 @@ export const authenticate = () => dispatch => dispatch({ type: AUTHENTICATED })
 
 // EDIT PROFILE
 export const edit = (editedUser) => (dispatch, getState) => {
-    axios.put(`http://localhost:8000/api/user/${getState().auth.user.username}`, editedUser)
+    axios.put(`http://localhost:8000/api/auth/profile/${getState().auth.user.username}`, editedUser, tokenConfig(getState))
         .then(res => {
             return dispatch({
                 type: EDIT,
@@ -146,8 +146,8 @@ export const edit = (editedUser) => (dispatch, getState) => {
 };
 
 // GET USER NAMES LIST
-export const getUsersList = () => (dispatch) => {
-    axios.get('http://localhost:8000/api/auth/profile')
+export const getUsersList = () => (dispatch, getState) => {
+    axios.get('http://localhost:8000/api/auth/profile', tokenConfig(getState))
         .then(res => {
             return dispatch({
                 type: GET_USERS_LIST,
@@ -157,8 +157,8 @@ export const getUsersList = () => (dispatch) => {
 };
 
 // GET PROFILE
-export const getProfile = (username) => (dispatch) => {
-    axios.get(`http://localhost:8000/api/auth/profile/${username}`)
+export const getProfile = (username) => (dispatch, getState) => {
+    axios.get(`http://localhost:8000/api/auth/profile/${username}`, tokenConfig(getState))
         .then(res => {
             return dispatch({
                 type: GET_PROFILE,
@@ -169,8 +169,8 @@ export const getProfile = (username) => (dispatch) => {
 };
 
 // FOLLOW
-export const follow = ({ creator, following }) => (dispatch) => {
-    axios.post(`http://localhost:8000/api/auth/connection`, { creator, following })
+export const follow = ({ creator, following }) => (dispatch, getState) => {
+    axios.post(`http://localhost:8000/api/auth/connection`, { creator, following }, tokenConfig(getState))
         .then(res => {
             return dispatch({
                 type: FOLLOW,
@@ -180,8 +180,8 @@ export const follow = ({ creator, following }) => (dispatch) => {
 };
 
 // UN FOLLOW
-export const unfollow = ({ creator, following }) => (dispatch) => {
-    axios.delete(`http://localhost:8000/api/auth/connection/${creator}/${following}`)
+export const unfollow = ({ creator, following }) => (dispatch, getState) => {
+    axios.delete(`http://localhost:8000/api/auth/connection/${creator}/${following}`, tokenConfig(getState))
         .then(res => {
             return dispatch({
                 type: UNFOLLOW,

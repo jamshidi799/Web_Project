@@ -1,4 +1,8 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
+import { connect } from 'react-redux'
+
+import { getNotification, deleteNotification } from '../../actions/notification'
+
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
@@ -9,39 +13,24 @@ import GridList from "@material-ui/core/GridList";
 
 
 class Notification extends Component {
-    state = {
-        notification:[
-            {
-                kind:'like',
-                username: 'Mohammad'
-            },{
-                kind:'follow',
-                username: 'Ali'
-            }
-        ]
-    };
+    componentDidMount() {
+        this.props.getNotification()
+    }
 
     render() {
         return (
             <React.Fragment>
-                <CssBaseline/>
+                <CssBaseline />
                 <Container maxWidth="sm">
-                    <Typography component="div" style={{backgroundColor: 'white', height: '88vh',}}
-                                className="border rounded">
-                        <GridList cellHeight={180} style={this.gridList}>
-                            <div className='d-flex ml-3'>
-                                <div className="d-flex align-content-end m-5">
-                                    <div className='d-flex flex-column'>
-                                        {this.state.notification.map(item => (
-                                            <React.Fragment>
-                                                <NotificationCard user={item}/>
-                                                <Divider variant="inset" component="li"/>
-                                            </React.Fragment>
-                                        ))}
-                                    </div>
+                    <Typography component="div" style={{ backgroundColor: 'white', height: '400px', }}
+                        className="border rounded">
+                        <div className="container mt-2 d-flex flex-column justify-content-center">
+                            {this.props.notifications.map(item => (
+                                <div>
+                                    <NotificationCard notification={item} handleClose={this.props.handleClose} key={item.id} />
                                 </div>
-                            </div>
-                        </GridList>
+                            ))}
+                        </div>
                     </Typography>
                 </Container>
             </React.Fragment>
@@ -51,4 +40,10 @@ class Notification extends Component {
 }
 
 
-export default Notification;
+const mapStateToProps = state => {
+    return {
+        notifications: state.notification.notifications
+    }
+}
+
+export default connect(mapStateToProps, { getNotification })(Notification)
